@@ -14,7 +14,13 @@ app.get('/todos', function(request, response) {
   response.render('index.pug');
 })
 
-app.get('/users/search', function(request, response) {
+app.get('/todos', function(request, response) {
+  response.render('users/index.pug', {
+    users : users
+  });
+})
+
+app.get('/todos/search', function(request, response) {
   var q = request.query.q;
   var matchedUsers = users.filter(function(user){
     return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
