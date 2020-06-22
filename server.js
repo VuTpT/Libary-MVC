@@ -13,6 +13,11 @@ app.get('/todos', function(request, response) {
   response.render('index.pug');
 })
 
+app.get('/todos?q=nấu', function(request, response) {
+  response.render('index.pug');
+})
+
+
 // listen for requests :)
 app.listen(process.env.PORT, () => {
   console.log("Server listening on port " + process.env.PORT);
