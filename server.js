@@ -10,7 +10,7 @@ app.get("/", (request, response) => {
 });
 
 app.get('/todos', function(request, response) {
-  response.render('index.pug')
+  response.render('index.pug');
 })
 
 // listen for requests :)
