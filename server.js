@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const vals = ['Đi chợ','Nấu cơm','Rửa bát','Học code tại CodersX'];
+const users = [{name: 'Đi chợ'}, {name: 'Nấu cơm'}, {name: 'Rửa bát'}, {name: 'Học code tại CodersX'}];
 
 app.set("view engine", "pug");
 app.set("views", "./views");
@@ -14,13 +14,15 @@ app.get('/todos', function(request, response) {
   response.render('index.pug');
 })
 
-app.get('/todos/search', function(request, response) {
+app.get('/users/search', function(request, response) {
   var q = request.query.q;
-  var matchedVal = vals.filter(function(val){
-    return val.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+  var matchedUsers = users.filter(function(user){
+    return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
   });
   
-  response.render('u');
+  response.render('users/index.pug', {
+    users: matchedUsers
+    });
 })
 
 
