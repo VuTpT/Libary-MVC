@@ -26,9 +26,10 @@ app.get('/todos/search', function(request, response) {
     return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
   });
   
-  response.render('users/index.pug', {
+  response.render('users/index.pug/', {
     users: matchedUsers
     });
+  response.redirect('todos')
 })
 
 
