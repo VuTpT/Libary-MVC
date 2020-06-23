@@ -36,12 +36,12 @@ app.get('/todos/search', function(request, response) {
 })
 
 app.get('/todos/create', function(request, response) {
-  response.render('users/create');
+  response.render('/todos/create');
 });
 
 app.post('/todos/create', function(request, response) {
   users.push(request.body);
-  response.redirect('/users');
+  response.redirect('back');
 })
 
 
