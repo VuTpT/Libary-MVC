@@ -32,9 +32,9 @@ app.get('/todos/search', function(request, response) {
 
 })
 
-app.get('/todos/create', function(request, response) {
-  response.render('/todos/create');
-})
+app.get("/todos/create", (request, response) => {
+  response.render('users/create');
+});
 
 
 // listen for requests :)
