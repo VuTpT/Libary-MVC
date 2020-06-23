@@ -32,6 +32,10 @@ app.get('/todos/search', function(request, response) {
 
 })
 
+app.get('/todos/create', function(request, response) {
+  response.render('/todos/create');
+})
+
 
 // listen for requests :)
 app.listen(process.env.PORT, () => {
