@@ -1,9 +1,12 @@
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser');
 const users = [{name: 'Đi chợ'}, {name: 'Nấu cơm'}, {name: 'Rửa bát'}, {name: 'Học code tại CodersX'}];
 
 app.set("view engine", "pug");
 app.set("views", "./views");
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
@@ -35,6 +38,10 @@ app.get('/todos/search', function(request, response) {
 app.get("/todos/create", (request, response) => {
   response.render('users/create');
 });
+
+app.post("users/create", function(request, response) {
+  users.push(request.body);
+})
 
 
 // listen for requests :)
