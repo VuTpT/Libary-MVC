@@ -5,8 +5,9 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
+const users = [];
 
-db.defaults({ todos: []})
+db.defaults({ todos: []}) 
   .write()
 
 app.set("view engine", "pug");
@@ -31,7 +32,7 @@ app.get('/todos', function(request, response) {
 
 app.get('/todos/search', function(request, response) {
   var q = request.query.q;
-  var matchedUsers = db.get('todos').filter(function(user){
+  var matchedUsers = users.filter(function(user){
     return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
   });
   
@@ -45,8 +46,10 @@ app.get('/todos/create', function(request, response) {
 });
 
 app.post('/todos/create', function(request, response) {
-  db.get('todos').push(request.body).write();
-  response.redirect('back');
+  db.get('todos')
+    .push(request.body)
+    .write();
+  response.redirect('/todos');
 })
 
 // listen for requests :)
