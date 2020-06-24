@@ -2,67 +2,9 @@
   "todos": [
     {
       "id": 1,
-      "text": "blah"
-    },
-    {
-      "todo": "asda"
-    },
-    {
-      "todo": "asdad"
-    },
-    {
-      "todo": "sadasd"
-    },
-    {
-      "todo": "sdadasda"
-    },
-    {
-      "todo": "sdadasda"
-    },
-    {
-      "todo": "adad"
-    },
-    {
-      "todo": "asda"
-    },
-    {
-      "todo": "sdadasda"
-    },
-    {
-      "todo": "sdadasda"
-    },
-    {
-      "todo": "sdadasda"
-    },
-    {
-      "todo": "sdadasda"
-    },
-    {
-      "todo": "sdadasda"
-    },
-    {
-      "todo": "sdadasda"
-    },
-    {
-      "todo": "sdadasda"
-    },
-    {
-      "todo": "sdadasda"
-    },
-    {
-      "todo": "sdadasda"
+      "user": "blah"
     }
   ],
-  "users": [
-    {
-      "todo": "asdad"
-    },
-    {
-      "todo": "asdasd"
-    },
-    {
-      "todo": "adad"
-    }
-  ],
-  "ts": []
+  "user": {},
+  "count": 0
 }
