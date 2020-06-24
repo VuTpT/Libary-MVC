@@ -5,15 +5,7 @@
       "user": "blah"
     },
     {
-      "todo": "Hai"
-    },
-    {
-      "todo": "hai"
-    },
-    {
-      "todos": "hkhjk"
+      "user": "Hai"
     }
-  ],
-  "user": {},
-  "count": 0
+  ]
 }
