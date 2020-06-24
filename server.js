@@ -7,7 +7,7 @@ const adapter = new FileSync('db.json');
 const db = low(adapter);
 
 
-db.defaults({ todos: [], user: {}, count: 0}) 
+db.defaults({ todos: []}) 
   .write();
 
 app.set("view engine", "pug");
@@ -16,13 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // https://expressjs.com/en/starter/basic-routing.html
-app.get("/", (request, response) => {
-  response.send("Hello Word!");
-});
-
-app.get('/todos', function(request, response) {
-  response.render('index.pug');
-})
 
 app.get('/todos', function(request, response) {
   response.render('users/index', {
