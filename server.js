@@ -1,12 +1,18 @@
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
-const users = [{name: 'Đi chợ'}, {name: 'Nấu cơm'}, {name: 'Rửa bát'}, {name: 'Học code tại CodersX'}];
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('db.json');
+const db = low(adapter);
+
+db.defaults({ users: []})
+  .write()
 
 app.set("view engine", "pug");
 app.set("views", "./views");
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
@@ -19,7 +25,7 @@ app.get('/todos', function(request, response) {
 
 app.get('/todos', function(request, response) {
   response.render('users/index.pug', {
-    users : users
+    users : db.get('users').value()
   });
 })
 
