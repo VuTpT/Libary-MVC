@@ -6,7 +6,7 @@ const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
 
-db.defaults({ users: []})
+db.defaults({ todos: []})
   .write()
 
 app.set("view engine", "pug");
@@ -25,13 +25,13 @@ app.get('/todos', function(request, response) {
 
 app.get('/todos', function(request, response) {
   response.render('users/index.pug', {
-    users : db.get('users').value()
+    users : db.get('todos').value()
   });
 })
 
 app.get('/todos/search', function(request, response) {
   var q = request.query.q;
-  var matchedUsers = users.filter(function(user){
+  var matchedUsers = db.get('todos').filter(function(user){
     return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
   });
   
@@ -45,7 +45,7 @@ app.get('/todos/create', function(request, response) {
 });
 
 app.post('/todos/create', function(request, response) {
-  users.push(request.body);
+  db.get('todos').push(request.body).write();
   response.redirect('back');
 })
 
