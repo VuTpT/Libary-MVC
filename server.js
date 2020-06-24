@@ -7,7 +7,7 @@ const adapter = new FileSync('db.json');
 const db = low(adapter);
 const users = [];
 
-db.defaults({ todos: []}) 
+db.defaults({ todos: [] }) 
   .write()
 
 app.set("view engine", "pug");
@@ -32,7 +32,7 @@ app.get('/todos', function(request, response) {
 
 app.get('/todos/search', function(request, response) {
   var q = request.query.q;
-  var matchedUsers = users.filter(function(user){
+  var matchedUsers = db.get('todos').filter(function(user){
     return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
   });
   
