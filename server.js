@@ -7,7 +7,7 @@ const adapter = new FileSync('db.json');
 const db = low(adapter);
 
 
-db.defaults({ todos: []}) 
+db.defaults({ todos: [] }) 
   .write();
 
 app.set("view engine", "pug");
@@ -16,6 +16,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // https://expressjs.com/en/starter/basic-routing.html
+app.get('/', function(request, response) {
+  response.render('users/index', {
+     name: 'AAA'
+  });
+})
 
 app.get('/todos', function(request, response) {
   response.render('users/index', {
@@ -26,11 +31,11 @@ app.get('/todos', function(request, response) {
 app.get('/todos/search', function(request, response) {
   var q = request.query.q;
   var matchedUsers = db.get('todos').filter(function(todo){
-    return todo.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+    return todo.user.toLowerCase().indexOf(q.toLowerCase()) !== -1;
   });
   
   response.render('users/index.pug', {
-    users: matchedUsers
+    todos: matchedUsers
     });
 })
 
