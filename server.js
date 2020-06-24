@@ -32,7 +32,6 @@ app.get('/todos/search', function(request, response) {
   response.render('users/index.pug', {
     users: matchedUsers
     });
-
 })
 
 app.get('/todos/create', function(request, response) {
@@ -40,10 +39,9 @@ app.get('/todos/create', function(request, response) {
 });
 
 app.post('/todos/create', function(request, response) {
-  users.push(request.body)
-  response.redirect('back')
+  users.push(request.body);
+  response.redirect('back');
 })
-
 
 // listen for requests :)
 app.listen(process.env.PORT, () => {
