@@ -30,12 +30,12 @@ app.get('/todos', function(request, response) {
 
 app.get('/todos/search', function(request, response) {
   var q = request.query.q;
-  var matchedUsers = db.get('todos').filter(function(todo){
-    return todo.user.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+  var matchedUsers = db.get('todos').filter(function(user){
+    return user.toLowerCase().indexOf(q.toLowerCase()) !== -1;
   });
   
-  response.render('users/index.pug', {
-    todos: matchedUsers
+  response.render('/todos/index.pug', {
+    user: matchedUsers
     });
 })
 
