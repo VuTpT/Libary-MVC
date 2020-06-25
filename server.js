@@ -28,16 +28,16 @@ app.get('/todos', function(request, response) {
   });
 })
 
-// app.get('/todos/search', function(request, response) {
-//   var q = request.query.q;
-//   var matchedUsers = db.get('todos').filter(function(name){
-//     return name.user.toLowerCase().indexOf(q.toLowerCase()) !== -1;
-//   });
+app.get('/todos/search', function(request, response) {
+  var q = request.query.user;
+  var matchedUsers = db.get('todos').filter(function(users){
+    return users.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+  });
   
-//   response.render('/views/index', {
-//     todos: matchedUsers
-//     });
-// })
+  response.render('/todos', {
+    todos: matchedUsers
+    });
+})
 
 app.get('/todos/create', function(request, response) {
   response.render('users/create');
