@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 // https://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
   response.render('users/index', {
-     name: 'AAA'
+     name: "I Love CodersX"
   });
 })
 
@@ -27,16 +27,16 @@ app.get('/todos', function(request, response) {
   });
 })
 
-app.get('/todos/search', function (request, response) {
+app.get('/todos', function (request, response) {
   var q = request.query.q;
-  var data = db
+  var matchedUser = db
     .get('todos')
     .value()
     .filter(function(value) {
-      return q ? value.text.indexOf(q) !== -1 : true;
+      return q ? value.text.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
     });
   response.render('index', {
-    todos: data,
+    todos: matchedUser
   });
 });
 
