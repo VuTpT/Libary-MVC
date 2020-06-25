@@ -33,13 +33,14 @@ app.get('/todos/search', function(request, response) {
   var matchedUsers = db.get('todos')
   .value()
   .filter (function(val){
-    return val.todos
+    return val.toLowerCase()
               .indexOf(q.toLowerCase()) !== -1;
   })
-  
-  response.render('/todos/index', {
-    todos: matchedUsers
-    });
+
+  // response.render('/todos/index', {
+  //   todos: matchedUsers
+  //   })
+  response.render(console.log(q));
 })
 
 app.get('/todos/create', function(request, response) {
