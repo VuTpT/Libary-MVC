@@ -29,18 +29,17 @@ app.get('/todos', function(request, response) {
 })
 
 app.get('/todos/search', function(request, response) {
-  var q = request.query.user;
+  var q = request.query.text;
   var matchedUsers = db.get('todos')
   .value()
   .filter (function(val){
-    return val.toLowerCase()
-              .indexOf(q.toLowerCase()) !== -1;
+    return q ? val.toLowerCase()
+              .indexOf(q.toLowerCase()) !== -1 : true
   })
 
-  // response.render('/todos/index', {
-  //   todos: matchedUsers
-  //   })
-  response.render(console.log(q));
+  response.render('', {
+    todos: matchedUsers
+    })
 })
 
 app.get('/todos/create', function(request, response) {
