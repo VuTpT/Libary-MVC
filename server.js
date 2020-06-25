@@ -29,12 +29,18 @@ app.get('/todos', function(request, response) {
 })
 
 app.get('/todos/search', function(request, response) {
-  var q = request.query.user;
-  var matchedUsers = db.get('todos').filter(function(users){
-    return users.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
-  });
+  // var q = request.query.user;
+  // var matchedUsers = db.get('todos')
+  // .filter(function(users){
+  //   return users.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+  // })
   
-  response.render('/todos', {
+  var q = request.query.q;
+  db.get('posts')
+  .find(request.query.q)
+  .value()
+  
+  response.render('/todos/index', {
     todos: matchedUsers
     });
 })
