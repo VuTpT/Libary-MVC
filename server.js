@@ -11,7 +11,7 @@ db.defaults({ todos: []})
   .write();
 
 app.set("view engine", "pug");
-app.set("views", "./views");
+app.set("users", "./views/users");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -30,16 +30,16 @@ app.get('/todos', function(request, response) {
 
 app.get('/todos/search', function(request, response) {
   var q = request.query.q;
-  var data = db.get('todos')
-    .value()
-    .filter(function (value) {
-      return q ? value.text.indexOf(q) !== -1 : true
-    });
+  var matchedUsers = db.get('todos')
+  .value()
+  .filter (function(val){
+    return val.text.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+  })
   
-  response.render('index', {
-    todos: data,
-  });
-});
+  response.render('/todos/index', {
+    todos: matchedUsers
+    });
+})
 
 app.get('/todos/create', function(request, response) {
   response.render('users/create');
