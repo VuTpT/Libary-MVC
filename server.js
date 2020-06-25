@@ -26,16 +26,16 @@ app.get('/todos', function(request, response) {
     todos : db.get('todos').value()
   });
 })
-
-app.get('/todos', function (request, response) {
+//Chưa chỉnh sửa 
+app.get('/todos/search', function (request, response) {
   var q = request.query.q;
   var matchedUser = db
     .get('todos')
     .value()
     .filter(function(value) {
-      return q ? value.text.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
+      return value.text.toLowerCase().indexOf(q.toLowerCase()) !== -1;
     });
-  response.render('index', {
+  response.render('./index', {
     todos: matchedUser
   });
 });
