@@ -42,9 +42,10 @@ app.get('/todos/create', function(request, response) {
   response.render('users/create');
 });
 
+
 app.post('/todos/create', function(request, response) {
   db.get('todos')
-    .push({ id: n = n+1, text: request.body.text })
+    .push({ id: n = n++, text: request.body.text })
     .write();
   response.redirect('/todos');
 })
