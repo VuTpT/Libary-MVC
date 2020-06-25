@@ -16,9 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
-  response.render('users/index', {
-     name: "I Love CodersX"
-  });
+  response.send('I Love CodersX');
 })
 
 app.get('/todos', function(request, response) {
@@ -46,7 +44,7 @@ app.get('/todos/create', function(request, response) {
 
 app.post('/todos/create', function(request, response) {
   db.get('todos')
-    .push({ id: n++, text: request.body.text })
+    .push({ id: n = n+1, text: request.body.text })
     .write();
   response.redirect('/todos');
 })
