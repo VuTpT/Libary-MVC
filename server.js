@@ -5,7 +5,7 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
-
+var n = 1;
 
 db.defaults({ todos: []}) 
   .write();
@@ -48,7 +48,7 @@ app.get('/todos/create', function(request, response) {
 
 app.post('/todos/create', function(request, response) {
   db.get('todos')
-    .push({id: n++1, text: request.body.todos})
+    .push({ id: n++, text: request.body.text })
     .write();
   response.redirect('/todos');
 })

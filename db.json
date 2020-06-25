@@ -5,13 +5,21 @@
       "text": "blah"
     },
     {
-      "text": "Hai"
+      "id": 1
     },
     {
-      "text": "Loi"
+      "id": 1,
+      "text": {
+        "text": "Phong"
+      }
     },
     {
-      "text": "Long"
+      "id": 1,
+      "text": "Phong"
+    },
+    {
+      "id": 2,
+      "text": "Khai"
     }
   ]
 }
