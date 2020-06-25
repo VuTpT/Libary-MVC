@@ -2,18 +2,16 @@
   "todos": [
     {
       "id": 1,
-      "user": "blah"
+      "text": "blah"
     },
     {
-      "user": "Hai"
+      "text": "Hai"
     },
     {
-      "user": "Loi"
+      "text": "Loi"
     },
     {
-      "user": "Long"
+      "text": "Long"
     }
-  ],
-  "u": [],
-  "user": []
+  ]
 }

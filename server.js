@@ -33,7 +33,8 @@ app.get('/todos/search', function(request, response) {
   var matchedUsers = db.get('todos')
   .value()
   .filter (function(val){
-    return val.toLowerCase.indexOf(q.toLowerCase() !== -1);
+    return val.todos
+              .indexOf(q.toLowerCase()) !== -1;
   })
   
   response.render('/todos/index', {
@@ -47,7 +48,7 @@ app.get('/todos/create', function(request, response) {
 
 app.post('/todos/create', function(request, response) {
   db.get('todos')
-    .push(request.body)
+    .push({id: n++1, text: request.body.todos})
     .write();
   response.redirect('/todos');
 })
