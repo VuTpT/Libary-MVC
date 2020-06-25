@@ -7,8 +7,7 @@ const adapter = new FileSync('db.json');
 const db = low(adapter);
 var n = 1;
 
-db.defaults({ todos: []}) 
-  .write();
+db.defaults({ todos: []}).write();
 
 app.set("view engine", "pug");
 app.set("users", "./views/users");
@@ -28,18 +27,18 @@ app.get('/todos', function(request, response) {
   });
 })
 
-app.get('/todos/search', function(request, response) {
+app.get('/todos/search', function (request, response) {
   var q = request.query.q;
-  var matchedUsers = db.get('todos')
-  .value()
-  .filter (function(val){
-    return val.text.toLowerCase().indexOf(q.toLowerCase()) !== -1;
-  })
-  
-  response.render('/todos/index', {
-    todos: matchedUsers
+  var data = db
+    .get('todos')
+    .value()
+    .filter(function(value) {
+      return q ? value.text.indexOf(q) !== -1 : true;
     });
-})
+  response.render('index', {
+    todos: data,
+  });
+});
 
 app.get('/todos/create', function(request, response) {
   response.render('users/create');
