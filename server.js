@@ -33,7 +33,7 @@ app.get('/todos/search', function (request, response) {
     .filter(function(value) {
       return value.text.toLowerCase().indexOf(q.toLowerCase()) !== -1;
     });
-  response.render('./index', {
+  response.render('users/index', {
     todos: matchedUser
   });
 });
