@@ -44,7 +44,7 @@ app.get('/todos/create', function(request, response) {
 
 app.get('/todos/:id', function(request, response) {
   var id = parseInt(request.params.id);
-  var user = db.get('users').find({id : id }).value();
+  var user = db.get('todos').find({id : id }).value();
   response.render('users/view',{
     user : user
   });
