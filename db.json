@@ -1,28 +1,20 @@
 {
   "todos": [
     {
-      "id": 1,
-      "text": "blah"
-    },
-    {
-      "id": 2,
-      "text": "Khai"
-    },
-    {
-      "id": 3,
-      "text": "Long"
-    },
-    {
-      "id": 2,
-      "text": "Khanh"
-    },
-    {
-      "id": "s5jWm4M7h",
+      "id": "DWH6JKbYR",
       "text": "Phong"
     },
     {
-      "id": "6DRcv8zYq",
+      "id": "pLw8yIijz",
       "text": "Khai"
+    },
+    {
+      "id": "hVEjrYwhM",
+      "text": "Khanh"
+    },
+    {
+      "id": "Z3fF7UPFk",
+      "text": "Long"
     }
   ]
 }
