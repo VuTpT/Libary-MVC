@@ -42,6 +42,11 @@ app.get('/todos/create', function(request, response) {
   response.render('users/create');
 });
 
+app.get('/todos/:id', function(request, response) {
+  var id =request.params.id;
+  var user = db.get('todos').find({id : id });
+  response
+});
 
 app.post('/todos/create', function(request, response) {
   db.get('todos')
