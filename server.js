@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
+const shortid = require('shortid');
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
@@ -44,15 +45,17 @@ app.get('/todos/create', function(request, response) {
 
 app.get('/todos/:id', function(request, response) {
   var id = parseInt(request.params.id);
-  var user = db.get('todos').find({id : id }).value();
+  
+  var user = db.get('todos').find({ id : id }).value();
+  
   response.render('users/view',{
-    user : user
+    text : user
   });
 });
 
 app.post('/todos/create', function(request, response) {
   db.get('todos')
-    .push({ id: n = n++, text: request.body.text })
+    .push({ id: shortid.generate(), text: request.body.text })
     .write();
   response.redirect('/todos');
 })

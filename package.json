@@ -29,6 +29,7 @@
     "express"
   ],
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "shortid": "^2.2.15"
   }
 }
