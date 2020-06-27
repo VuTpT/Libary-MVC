@@ -49,7 +49,7 @@ app.get('/todos/:id', function(request, response) {
   var user = db.get('todos').find({ id : id }).value();
   
   response.render('users/view',{
-    text : user
+    user : user
   });
 });
 
