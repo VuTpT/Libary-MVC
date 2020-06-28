@@ -6,6 +6,7 @@ dependencies:
   save: 2.4.0
 devDependencies:
   nodemon: 2.0.4
+  shortid: 2.2.15
 packages:
   /@babel/helper-validator-identifier/7.10.3:
     dev: false
@@ -906,6 +907,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
+  /nanoid/2.1.11:
+    dev: true
+    resolution:
+      integrity: sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==
   /negotiator/0.6.2:
     dev: false
     engines:
@@ -1289,6 +1294,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
+  /shortid/2.2.15:
+    dependencies:
+      nanoid: 2.1.11
+    dev: true
+    resolution:
+      integrity: sha512-5EaCy2mx2Jgc/Fdn9uuDuNIIfWBpzY4XIlhoqtXF6qsf+/+SGZ+FxDdX/ZsMZiWupIWNqAEmiNY4RC+LSmCeOw==
   /signal-exit/3.0.3:
     dev: true
     resolution:
@@ -1558,3 +1569,4 @@ specifiers:
   nodemon: ^2.0.4
   pug: ^3.0.0
   save: ^2.4.0
+  shortid: ^2.2.15
