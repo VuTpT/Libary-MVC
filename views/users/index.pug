@@ -9,7 +9,8 @@ form(action="/todos/search", method="GET")
 
 ul
   each todo in todos 
-    li= todo.text
+    li 
+      span= todo.text
       //TẠO KHOẢN CÁCH
       span &nbsp; 
       a(href='/todos/' + todo.id) View
