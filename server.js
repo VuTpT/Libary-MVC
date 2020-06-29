@@ -73,11 +73,11 @@ app.get('/route/:id', function(request, response) {
 // });
 
 app.post('/route/update', function(request, response) {
-  db.get('books')
+  var newtitle = db.get('books')
     .find({ id: request.params.id})
-    .assign({ title: request.body.title })
+    .assign({ title: request.body})
     .write()
-    .id;
+    .id
   response.redirect('/route');
 });
 
