@@ -56,6 +56,15 @@ app.get('/route/update/:id', function(request, response) {
   response.render('users/update');
 });
 
+app.get('/route/update/:id', function(request, response) {
+ 
+  db.get('books')
+    .find({ id : request.params.id })
+    .assign({ title: request.params.title })
+    .w()
+  response.render('users/update');
+});
+
 //Delete books
 app.get('/route/delete/:id', function(request, response) {
   var id = request.params.id;
