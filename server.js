@@ -48,9 +48,8 @@ app.get('/route/create', function(request, response) {
 
 //Edit books
 app.get('/route/update/:id', function(request, response) {
-  var title = request.params.title;
   
-  var newtitle = db.get('books').assign({ title: title }).write().id;
+  var newtitle = db.get('books').find({ title: request.body.title }).assign({ title: request.body.title }).write().id;
   
   response.render('users/update',{
     newtitle : newtitle
