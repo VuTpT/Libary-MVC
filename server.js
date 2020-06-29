@@ -51,7 +51,7 @@ app.get('/route/update/:id', function(request, response) {
  
   db.get('books')
     .find({ id : request.params.id })
-    .assign({ title: request.body.title })
+    .push({ title: request.body.title })
     .write()
   response.render('users/update');
 });
@@ -66,24 +66,13 @@ app.get('/route/delete/:id', function(request, response) {
   .write();
   
   response.redirect('/route');
-
-});
-
-//Edit books
-app.post('/route/update/:id', function(request, response) {
-  db.get('books')
-    .find({ id : request.params.id })
-    .push({ title: request.body.title })
-    .write()
-    .id;
-  response.redirect('/route');
 });
 
 //Create books  
 app.post('/route/create', function(request, response) {
   db.get('books')
     .push({ id: shortid.generate(),title: request.body.title, description : request.body.description })
-    .write()
+    .value()
     .id;
   response.redirect('/route');
 })
