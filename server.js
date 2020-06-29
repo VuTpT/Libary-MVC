@@ -74,7 +74,7 @@ app.get('/route/:id', function(request, response) {
 
 app.post('/route/update', function(request, response) {
   db.get('books')
-    .find({ id: request.params.id })
+    .find({ id: request.params.id})
     .assign({ title: request.body.title })
     .write()
     .id;
@@ -84,7 +84,7 @@ app.post('/route/update', function(request, response) {
 //Create books  
 app.post('/route/create', function(request, response) {
   db.get('books')
-    .push({ id: shortid.generate(),title: request.body.title, name : request.body.name })
+    .push({ id: shortid.generate(),title: request.body.title, description : request.body.description })
     .write()
     .id;
   response.redirect('/route');
