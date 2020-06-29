@@ -50,18 +50,18 @@ app.get('/route/create', function(request, response) {
 app.get('/route/update/:id', function(request, response) {
   var title = request.params.title;
   
-  var user = db.get('books').find({ title : title }).assign({ title: title }).write().id;
+  var newtitle = db.get('books').assign({ title: title }).write().id;
   
-  response.render('users/view',{
-    user : user
+  response.render('users/update',{
+    newtitle : newtitle
   });
 });
 
 //Delete books
-app.get('/route/:id', function(request, response) {
+app.get('/route/delete/:id', function(request, response) {
   var id = request.params.id;
   
-  var user = db
+  var book = db
   .get('books')
   .remove({ id : id })
   .write();
