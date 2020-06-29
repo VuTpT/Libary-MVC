@@ -48,16 +48,18 @@ app.get('/route/create', function(request, response) {
 
 //Edit books
 app.get('/route/update/:id', function(request, response) {
- 
-  db.get('books')
-    .find({ id : request.params.id })
-    .assign({ title: request.body.title })
-    .value()
   response.render('users/update');
 });
 
 app.post('/route/update/:id', function(request, response) {
+  var id = request.params.id 
+  var title = request.body.title
+  var description = request.body.description
   
+  db.get('books')
+    .find({ id : id })
+    .assign({ title: title, description: description })
+    .write()
   
   response.redirect('/route');
 });
