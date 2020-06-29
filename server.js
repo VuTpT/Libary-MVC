@@ -27,20 +27,17 @@ app.get('/route', function(request, response) {
 })
 
 //Search books
-app.get('/route/search', function(request, response) {
-  response.render('users/search');
-});
-
 app.get('/route/search', function (request, response) {
-  var q = request.query.q;
+  var q = request.query.q
   var matchedTitle = db
     .get('books')
     .value()
     .filter(function(value) {
       return q ? value.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
     });
-  response.render('users/search', {
-    books: matchedTitle
+    
+  response.render('users/index', {
+      books: matchedTitle  
   });
 });
 
