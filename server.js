@@ -53,10 +53,8 @@ app.get('/route/:id', function(request, response) {
   });
 });
 
-app.get('/route/:id', function(request, response) {
-  var id = request.params.id;
-  
-  var titles = db.get('books').remove({ id: id }).write();
+app.post('/route/edit', function(request, response) {
+   db.get('books').find({ titile :  }).assign({ title: name }).write();
   
   response.redirect('/route');
 });  
