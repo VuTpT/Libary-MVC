@@ -1,11 +1,12 @@
 h1 Book List
 
-form(action="/route/create")
-  button Add Title
+h6
+  form(action="/route/create")
+    button Add Title
 
-form(action="/route/search")
-  
-  button(type= "submit") Search
+  form(action="/route/search")
+
+    button Search
 
 ul
   each book in books

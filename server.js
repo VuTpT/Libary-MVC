@@ -27,8 +27,11 @@ app.get('/route', function(request, response) {
 })
 
 //Search books
+app.get('/route/search', function(request, response) {
+  response.render('users/search');
+});
+
 app.get('/route/search', function (request, response) {
-  response.render('users/search', {
   var q = request.query.q;
   var matchedTitle = db
     .get('books')
@@ -36,7 +39,7 @@ app.get('/route/search', function (request, response) {
     .filter(function(value) {
       return q ? value.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
     });
-  response.render('users/index', {
+  response.render('users/search', {
     books: matchedTitle
   });
 });
