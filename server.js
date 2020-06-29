@@ -47,13 +47,13 @@ app.get('/route/create', function(request, response) {
 });
 
 //Edit books
-app.get('/route/update', function(request, response) {
+app.get('/route/update/:id', function(request, response) {
   var title = request.params.title;
   
-  var titles = db.get('books').find({ title : title }).assign({ title: title }).write().id;
+  var user = db.get('books').find({ title : title }).assign({ title: title }).write().id;
   
   response.render('users/view',{
-    titles : titles
+    user : user
   });
 });
 
