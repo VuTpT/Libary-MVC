@@ -72,13 +72,11 @@ app.get('/route/:id', function(request, response) {
 //   response.redirect('/route');
 // });
 
-app.post('/route/update', function(request, response) {
-  var newtitle = db.get('books')
-    .find({ id: request.params.id})
-    .assign({ title: request.body})
+app.post('/route', function(request, response) {
+    db.get('books')
+    .push({ title: request.body.title})
     .write()
     .id
-  response.redirect('/route');
 });
 
 //Create books  
@@ -87,6 +85,15 @@ app.post('/route/create', function(request, response) {
     .push({ id: shortid.generate(),title: request.body.title, description : request.body.description })
     .write()
     .id;
+  response.redirect('/route');
+})
+
+app.put('/route/update/:id', function(request, response) {
+  db.get('books')
+    .find({ id: request.params.id})
+    .assign({ title: request.body.title})
+    .write()
+    .id
   response.redirect('/route');
 })
 
