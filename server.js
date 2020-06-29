@@ -48,11 +48,7 @@ app.get('/route/create', function(request, response) {
 
 //Edit books
 app.get('/route/update/:id', function(request, response) {
-  
-  var newtitle = db.get('books')
-  .find({ id : request.params.id })
-  .assign({ title: request.body.title }).write().id;
-  
+  response.render('users/update');
 });
 
 //Delete books
@@ -78,10 +74,11 @@ app.get('/route/:id', function(request, response) {
 
 app.post('/route/update', function(request, response) {
   db.get('books')
-    .find({ title : request.params.title })
+    .find({ id: request.params.id })
     .assign({ title: request.body.title })
     .write()
     .id;
+  response.redirect('/route');
 });
 
 //Create books  
