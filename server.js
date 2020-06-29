@@ -48,9 +48,9 @@ app.get('/route/create', function(request, response) {
 
 //Edit books
 app.get('/route/update', function(request, response) {
-  var id = request.params.id;
+  var title = request.params.title;
   
-  var titles = db.get('books').find({ id: id }).value();
+  var titles = db.get('books').find({ title : title }).assign({ title: title }).write().id;
   
   response.render('users/view',{
     titles : titles
@@ -71,12 +71,12 @@ app.get('/route/:id', function(request, response) {
 });
 
 //Edit books
-app.post('/route/update', function(request, response) {
-  var title = request.params.title;
-  db.get('books').find({ title : title }).assign({ title: title }).write().id;
+// app.post('/route/update', function(request, response) {
+//   var title = request.params.title;
+//   db.get('books').find({ title : title }).assign({ title: title }).write().id;
   
-  response.redirect('/route');
-});
+//   response.redirect('/route');
+// });
 
 //Create books  
 app.post('/route/create', function(request, response) {
