@@ -1,24 +1,8 @@
 {
-  "todos": [
+  "books": [
     {
-      "id": "DWH6JKbYR",
-      "text": "Phong"
-    },
-    {
-      "id": "pLw8yIijz",
-      "text": "Khai"
-    },
-    {
-      "id": "hVEjrYwhM",
-      "text": "Khanh"
-    },
-    {
-      "id": "Z3fF7UPFk",
-      "text": "Long"
-    },
-    {
-      "id": "ygTQtnrw3",
-      "text": "Phong"
+      "title": "DWH6JKbYR",
+      "description": "Phong"
     }
   ]
 }

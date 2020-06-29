@@ -8,7 +8,7 @@ const adapter = new FileSync('db.json');
 const db = low(adapter);
 
 
-db.defaults({ todos: []}).write();
+db.defaults({ books: []}).write();
 
 app.set("view engine", "pug");
 app.set("users", "./views/users");
@@ -17,48 +17,48 @@ app.use(express.urlencoded({ extended: true }));
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
-  response.send('I Love CodersX');
+  response.send('Welcome to libary!');
 })
 
-app.get('/todos', function(request, response) {
+app.get('/route', function(request, response) {
   response.render('users/index', {
-    todos : db.get('todos').value()
+    books : db.get('books').value()
   });
 })
-//Chưa chỉnh sửa 
-app.get('/todos/search', function (request, response) {
+
+app.get('/route/search', function (request, response) {
   var q = request.query.q;
-  var matchedUser = db
-    .get('todos')
+  var matchedTitle = db
+    .get('books')
     .value()
     .filter(function(value) {
-      return value.text.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+      return q ? value.description.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
     });
   response.render('users/index', {
-    todos: matchedUser
+    books: matchedTitle
   });
 });
 
-app.get('/todos/create', function(request, response) {
+app.get('/route/create', function(request, response) {
   response.render('users/create');
 });
 
-app.get('/todos/:id', function(request, response) {
-  var id = request.params.id;
+app.get('/route/:id', function(request, response) {
+  var title = request.params.title;
   
-  var user = db.get('todos').find({ id : id }).value();
+  var titles = db.get('books').find({ title : title }).value();
   
   response.render('users/view',{
-    user : user
+    titles : titles
   });
 });
 
-app.post('/todos/create', function(request, response) {
-  db.get('todos')
-    .push({ id: shortid.generate(), text: request.body.text })
+app.post('/route/create', function(request, response) {
+  db.get('books')
+    .push({ title: request.body.title, name : request.body.name })
     .write()
     .id;
-  response.redirect('/todos');
+  response.redirect('/route');
 })
 
 // listen for requests :)
