@@ -49,15 +49,14 @@ app.get('/route/create', function(request, response) {
 //Edit books
 app.get('/route/update/:id', function(request, response) {
   
-  var newtitle = db.get('books').find({ id : request.params.id }).assign({ title: request.body.title }).remove({ id : request.params.id }).write().id;
+  var newtitle = db.get('books')
+  .find({ id : request.params.id })
+  .assign({ title: request.body.title }).write().id;
   
-  response.render('users/update',{
-    newtitle : newtitle
-  });
 });
 
 //Delete books
-app.get('/route/delete/:id', function(request, response) {
+app.get('/route/:id', function(request, response) {
   var id = request.params.id;
   
   var book = db
@@ -76,6 +75,14 @@ app.get('/route/delete/:id', function(request, response) {
   
 //   response.redirect('/route');
 // });
+
+app.post('/route/update', function(request, response) {
+  db.get('books')
+    .find({ title : request.params.title })
+    .assign({ title: request.body.title })
+    .write()
+    .id;
+});
 
 //Create books  
 app.post('/route/create', function(request, response) {
