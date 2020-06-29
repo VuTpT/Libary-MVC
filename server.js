@@ -56,13 +56,13 @@ app.get('/route/update/:id', function(request, response) {
   response.render('users/update');
 });
 
-app.get('/route/update/:id', function(request, response) {
- 
-  db.get('books')
-    .find({ id : request.params.id })
-    .assign({ title: request.params.title })
-    .w()
-  response.render('users/update');
+app.post('/route/update/:id', function(request, response) {
+  
+  db.get('posts')
+  .map(request.params.title)
+  .value()
+  
+  response.redirect('/route');
 });
 
 //Delete books
