@@ -58,9 +58,6 @@ app.get('/route/update/:id', function(request, response) {
 
 app.post('/route/update/:id', function(request, response) {
   
-  db.get('posts')
-  .map(request.params.title)
-  .value()
   
   response.redirect('/route');
 });
