@@ -1,7 +1,7 @@
 h1 Book List
 
 form(action="/route/create")
-  button New
+  button Add Title
 
 form(action="/route/search", method="GET")
 
@@ -15,7 +15,7 @@ ul
       span= book.title
       //TẠO KHOẢN CÁCH
       span &nbsp; 
-      a(href='/route/' + book.description) View
+      a(href='/route/' + book.description) Edit
       
       
     

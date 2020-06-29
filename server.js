@@ -32,7 +32,7 @@ app.get('/route/search', function (request, response) {
     .get('books')
     .value()
     .filter(function(value) {
-      return q ? value.description.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
+      return q ? value.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
     });
   response.render('users/index', {
     books: matchedTitle
@@ -43,7 +43,7 @@ app.get('/route/create', function(request, response) {
   response.render('users/create');
 });
 
-app.get('/route/:id', function(request, response) {
+app.get('/route/title', function(request, response) {
   var title = request.params.title;
   
   var titles = db.get('books').find({ title : title }).value();
@@ -55,7 +55,7 @@ app.get('/route/:id', function(request, response) {
 
 app.post('/route/create', function(request, response) {
   db.get('books')
-    .push({ title: request.body.title, name : request.body.name })
+    .push({ id: ,title: request.body.title, name : request.body.name })
     .write();
   response.redirect('/route');
 })
