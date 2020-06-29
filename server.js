@@ -51,8 +51,8 @@ app.get('/route/update/:id', function(request, response) {
  
   db.get('books')
     .find({ id : request.params.id })
-    .push({ title: request.body.title })
-    .write()
+    .assign({ title: request.body.title })
+    .value()
   response.render('users/update');
 });
 
