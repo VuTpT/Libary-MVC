@@ -26,7 +26,9 @@ app.get('/route', function(request, response) {
   });
 })
 
+//Search books
 app.get('/route/search', function (request, response) {
+  response.render('users/search', {
   var q = request.query.q;
   var matchedTitle = db
     .get('books')
@@ -39,22 +41,37 @@ app.get('/route/search', function (request, response) {
   });
 });
 
+//Create books
 app.get('/route/create', function(request, response) {
   response.render('users/create');
 });
 
+// app.get('/route/:id', function(request, response) {
+//   var id = request.params.id;
+  
+//   var titles = db.get('books').find({ id: id }).value();
+  
+//   response.render('users/view',{
+//     titles : titles
+//   });
+// });
+
 app.get('/route/:id', function(request, response) {
   var id = request.params.id;
   
-  var titles = db.get('books').find({ id: id }).value();
+  var user = db
+  .get('books')
+  .remove({ id : id })
+  .write();
   
-  response.render('users/view',{
-    titles : titles
-  });
+  response.redirect('/route');
+
 });
 
+//Edit books
 app.post('/route/edit', function(request, response) {
-   db.get('books').find({ titile :  }).assign({ title: name }).write();
+  var title = request.params.title;
+  db.get('books').find({ title : title }).assign({ title: title }).write().id;
   
   response.redirect('/route');
 });  

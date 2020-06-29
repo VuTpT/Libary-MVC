@@ -3,9 +3,7 @@ h1 Book List
 form(action="/route/create")
   button Add Title
 
-form(action="/route/search", method="GET")
-
-  input(type="text", name= "q")
+form(action="/route/search")
   
   button(type= "submit") Search
 
@@ -15,7 +13,7 @@ ul
       span= book.title
       //TẠO KHOẢN CÁCH
       span &nbsp; 
-      a(href='/route/' + book.id) Edit
+      a(href='/route/' + book.id) Delete
       
       
     
