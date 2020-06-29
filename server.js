@@ -49,7 +49,7 @@ app.get('/route/create', function(request, response) {
 //Edit books
 app.get('/route/update/:id', function(request, response) {
   
-  var newtitle = db.get('books').find({ title: request.body.title }).assign({ title: request.body.title }).write().id;
+  var newtitle = db.get('books').find({ id : request.params.id }).assign({ title: request.body.title }).remove({ id : request.params.id }).write().id;
   
   response.render('users/update',{
     newtitle : newtitle

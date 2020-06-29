@@ -1,5 +1,12 @@
 h1 Books
 
-span= newtitle.title
+form(action="/route/create", method="POST")
+
+  label Title: 
+  
+  p 
+    input(type="text", name= "title")
+    
+  button Edit
 
       
