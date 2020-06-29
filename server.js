@@ -56,8 +56,7 @@ app.get('/route/:id', function(request, response) {
 app.post('/route/create', function(request, response) {
   db.get('books')
     .push({ title: request.body.title, name : request.body.name })
-    .write()
-    .id;
+    .write();
   response.redirect('/route');
 })
 

@@ -12,10 +12,10 @@ form(action="/route/search", method="GET")
 ul
   each book in books
     li 
-      span= book.description
+      span= book.title
       //TẠO KHOẢN CÁCH
       span &nbsp; 
-      a(href='/route/' + book.title) View
+      a(href='/route/' + book.description) View
       
       
     
