@@ -43,18 +43,17 @@ app.get('/route/search', function (request, response) {
 
 //Create books
 app.get('/route/create', function(request, response) {
-   var id = request.params.id;
-  
-  var book = db
-  .get('books')
-  .remove({ title : request.params.title })
-  .write();
   response.render('users/create');
 });
 
 //Edit books
 app.get('/route/update/:id', function(request, response) {
-  response.render('users/update');
+  db
+  .get('books')
+  .remove({ title : request.params.title})
+  .write()
+  response.redirect('/route');
+  // response.render('users/update');
 });
 
 //Delete books
@@ -96,9 +95,9 @@ app.post('/route/create', function(request, response) {
   response.redirect('/route');
 })
 
-app.post('/route/update/:id', function(request, response) {
+app.post('/route/update', function(request, response) {
   db.get('books')
-    .find({ id : request.params.id })
+    .find({ title : request.params.title })
     .assign({ title: request.body.title })
     .write()
     .id
