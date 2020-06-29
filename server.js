@@ -43,20 +43,29 @@ app.get('/route/create', function(request, response) {
   response.render('users/create');
 });
 
-app.get('/route/title', function(request, response) {
-  var title = request.params.title;
+app.get('/route/:id', function(request, response) {
+  var id = request.params.id;
   
-  var titles = db.get('books').find({ title : title }).value();
+  var titles = db.get('books').find({ id: id }).value();
   
   response.render('users/view',{
     titles : titles
   });
 });
 
+app.get('/route/:id', function(request, response) {
+  var id = request.params.id;
+  
+  var titles = db.get('books').remove({ id: id }).write();
+  
+  response.redirect('/route');
+});  
+  
 app.post('/route/create', function(request, response) {
   db.get('books')
-    .push({ id: ,title: request.body.title, name : request.body.name })
-    .write();
+    .push({ id: shortid.generate(),title: request.body.title, name : request.body.name })
+    .write()
+    .id;
   response.redirect('/route');
 })
 
