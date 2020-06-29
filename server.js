@@ -15,11 +15,12 @@ app.set("users", "./views/users");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// https://expressjs.com/en/starter/basic-routing.html
+
 app.get('/', function(request, response) {
   response.send('Welcome to libary!');
 })
 
+//Display screen
 app.get('/route', function(request, response) {
   response.render('users/index', {
     books : db.get('books').value()
@@ -35,9 +36,8 @@ app.get('/route/search', function (request, response) {
     .filter(function(value) {
       return q ? value.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
     });
-    
-  response.render('users/index', {
-      books: matchedTitle  
+    response.render('users/index', {
+      books: matchedTitle
   });
 });
 
@@ -46,16 +46,18 @@ app.get('/route/create', function(request, response) {
   response.render('users/create');
 });
 
-// app.get('/route/:id', function(request, response) {
-//   var id = request.params.id;
+//Edit books
+app.get('/route/update', function(request, response) {
+  var id = request.params.id;
   
-//   var titles = db.get('books').find({ id: id }).value();
+  var titles = db.get('books').find({ id: id }).value();
   
-//   response.render('users/view',{
-//     titles : titles
-//   });
-// });
+  response.render('users/view',{
+    titles : titles
+  });
+});
 
+//Delete books
 app.get('/route/:id', function(request, response) {
   var id = request.params.id;
   
@@ -69,13 +71,14 @@ app.get('/route/:id', function(request, response) {
 });
 
 //Edit books
-app.post('/route/edit', function(request, response) {
+app.post('/route/update', function(request, response) {
   var title = request.params.title;
   db.get('books').find({ title : title }).assign({ title: title }).write().id;
   
   response.redirect('/route');
-});  
-  
+});
+
+//Create books  
 app.post('/route/create', function(request, response) {
   db.get('books')
     .push({ id: shortid.generate(),title: request.body.title, name : request.body.name })

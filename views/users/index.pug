@@ -1,14 +1,18 @@
 h1 Book List
 
-h6
-  form(action="/route/create")
-    button Add Title
+form(action="/route/create")
 
-  form(action="/route/search")
+  button Add Title
+  
+form(action="/route/update")
 
-    input(type="text", name= "q")
+  button Update Title
+
+form(action="/route/search", method="GET")
+
+  input(type="text", name= "q")
     
-    button Search
+  button Search
 
 ul
   each book in books
