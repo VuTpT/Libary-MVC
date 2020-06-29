@@ -72,11 +72,11 @@ app.get('/route/:id', function(request, response) {
 //   response.redirect('/route');
 // });
 
-app.post('/route', function(request, response) {
-    db.get('books')
-    .push({ title: request.body.title})
-    .write()
-    .id
+app.get('/route/update', function(request, response) {
+  db.get('books')
+    .remove({ title : request.body.title })
+    .value()
+    .id;
 });
 
 //Create books  
@@ -90,11 +90,9 @@ app.post('/route/create', function(request, response) {
 
 app.put('/route/update/:id', function(request, response) {
   db.get('books')
-    .find({ id: request.params.id})
     .assign({ title: request.body.title})
     .write()
     .id
-  response.redirect('/route');
 })
 
 // listen for requests :)
