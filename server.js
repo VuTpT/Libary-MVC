@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
 var userRouter = require("./routes/user.route");
+var userRouter = require("./routes/user.route");
 
 
 app.set("view engine", "pug");
-app.set("users", "./views/users");
+app.set("books", "./views/books");
+app.set("user", "./views/user");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
