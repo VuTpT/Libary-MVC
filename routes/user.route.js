@@ -6,7 +6,7 @@ var db = require('../db');
 
 //Display screen
 router.get('/', function(request, response) {
-  response.render('users/index', {
+  response.render('books/index', {
     books : db.get('books').value()
   });
 })
@@ -20,19 +20,19 @@ router.get('/search', function (request, response) {
     .filter(function(value) {
       return q ? value.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
     });
-    response.render('users/index', {
+    response.render('books/index', {
       books: matchedTitle
   });
 });
 
 //Create books
 router.get('/create', function(request, response) {
-  response.render('users/create');
+  response.render('books/create');
 });
 
 //Edit books
 router.get('/update/:id', function(request, response) {
-  response.render('users/update');
+  response.render('books/update');
 });
 
 router.post('/update/:id', function(request, response) {
