@@ -78,6 +78,18 @@ router.get('/delete/:id', function(request, response) {
   response.redirect('/');
 });
 
+//Delete users
+router.get('/users/delete/:id', function(request, response) {
+  var id = request.params.id;
+  
+  var book = db
+  .get('users')
+  .remove({ id : id })
+  .write();
+  
+  response.redirect('/route/login');
+});
+
 // METHOD POST
 
 //Edit books
@@ -99,7 +111,7 @@ router.post('/users/update/:id', function(request, response) {
     .assign({ name: request.body.name })
     .write()
   
-  response.redirect('/');
+  response.redirect('/route/login');
 });
 
 //Create books  
