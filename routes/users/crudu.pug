@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var router = require('../user.route');
+var db = require('../db');
 
 router.get('/user', function(request, response) {
   response.render('user/index', {
@@ -8,57 +8,6 @@ router.get('/user', function(request, response) {
   });
 })
 
-//Search users
-router.get('/search', function (request, response) {
-  var q = request.query.q
-  var matchedTitle = db
-    .get('users')
-    .value()
-    .filter(function(value) {
-      return q ? value.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
-    });
-    response.render('user/index', {
-      users: matchedTitle
-  });
-});
 
-//Create users
-router.get('/create', function(request, response) {
-  response.render('user/create');
-});
 
-//Edit users
-router.get('/update/:id', function(request, response) {
-  response.render('user/update');
-});
-
-router.post('/update/:id', function(request, response) {
-
-  db.get('users')
-    .find({ id : request.params.id })
-    .assign({ title: request.body.title })
-    .write()
-  
-  response.redirect('/');
-});
-
-//Delete users
-router.get('/delete/:id', function(request, response) {
-  var id = request.params.id;
-  
-  var book = db
-  .get('users')
-  .remove({ id : id })
-  .write();
-  
-  response.redirect('/');
-});
-
-//Create users  
-router.post('/create', function(request, response) {
-  db.get('users')
-    .push({ id: shortid.generate(),title: request.body.title, description : request.body.description })
-    .value()
-    .id;
-  response.redirect('/');
-})
+module.exports = router;
