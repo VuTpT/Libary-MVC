@@ -3,6 +3,10 @@ h1 Users List
 form(action="/route/users/create")
 
   button Add User
+  
+form(action="/route")
+
+  button Back
 
 form(action="/route/users/search", method="GET")
 
@@ -12,9 +16,12 @@ form(action="/route/users/search", method="GET")
   
 ul
   each user in users
-    li= user.name
-    //TẠO KHOẢN CÁCH
+    li
+      p Name:
+        span &nbsp
+        span= user.name
+        //TẠO KHOẢN CÁCH
       span &nbsp; 
-      a(href='/user/update/' + book.id) Update
+      a(href='/route/users/update/' + user.id) Update
       span &nbsp; 
-      a(href='/user/delete/' + book.id) Delete
+      a(href='/route/users/delete/' + user.id) Delete

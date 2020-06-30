@@ -21,5 +21,14 @@
       "description": "House Shy"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "id": "3tIUb_S1T",
+      "name": "Phong"
+    },
+    {
+      "id": "spaKzefBR",
+      "name": "Phong"
+    }
+  ]
 }

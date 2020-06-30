@@ -61,6 +61,11 @@ router.get('/update/:id', function(request, response) {
   response.render('books/update');
 });
 
+//Edit users
+router.get('/users/update/:id', function(request, response) {
+  response.render('user/update');
+});
+
 //Delete books
 router.get('/delete/:id', function(request, response) {
   var id = request.params.id;
@@ -81,6 +86,17 @@ router.post('/update/:id', function(request, response) {
   db.get('books')
     .find({ id : request.params.id })
     .assign({ title: request.body.title })
+    .write()
+  
+  response.redirect('/');
+});
+
+//Edit users
+router.post('/users/update/:id', function(request, response) {
+
+  db.get('users')
+    .find({ id : request.params.id })
+    .assign({ name: request.body.name })
     .write()
   
   response.redirect('/');
