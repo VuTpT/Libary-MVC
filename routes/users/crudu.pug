@@ -1,38 +1,40 @@
+var express = require('express');
+var router = express.Router();
 var router = require('../user.route');
 
-router.get('/', function(request, response) {
-  response.render('users/index', {
-    books : db.get('books').value()
+router.get('/user', function(request, response) {
+  response.render('user/index', {
+    users : db.get('users').value()
   });
 })
 
-//Search books
+//Search users
 router.get('/search', function (request, response) {
   var q = request.query.q
   var matchedTitle = db
-    .get('books')
+    .get('users')
     .value()
     .filter(function(value) {
       return q ? value.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
     });
-    response.render('users/index', {
-      books: matchedTitle
+    response.render('user/index', {
+      users: matchedTitle
   });
 });
 
-//Create books
+//Create users
 router.get('/create', function(request, response) {
-  response.render('users/create');
+  response.render('user/create');
 });
 
-//Edit books
+//Edit users
 router.get('/update/:id', function(request, response) {
-  response.render('users/update');
+  response.render('user/update');
 });
 
 router.post('/update/:id', function(request, response) {
 
-  db.get('books')
+  db.get('users')
     .find({ id : request.params.id })
     .assign({ title: request.body.title })
     .write()
@@ -40,21 +42,21 @@ router.post('/update/:id', function(request, response) {
   response.redirect('/');
 });
 
-//Delete books
+//Delete users
 router.get('/delete/:id', function(request, response) {
   var id = request.params.id;
   
   var book = db
-  .get('books')
+  .get('users')
   .remove({ id : id })
   .write();
   
   response.redirect('/');
 });
 
-//Create books  
+//Create users  
 router.post('/create', function(request, response) {
-  db.get('books')
+  db.get('users')
     .push({ id: shortid.generate(),title: request.body.title, description : request.body.description })
     .value()
     .id;

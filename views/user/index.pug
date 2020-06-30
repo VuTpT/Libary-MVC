@@ -1,0 +1,26 @@
+h1 Book List
+
+form(action="/user/create")
+
+  button Add Title
+
+form(action="/user/search", method="GET")
+
+  input(type="text", name= "q")
+    
+  button Search
+
+ul
+  each book in books
+    li
+      p Title:
+        span &nbsp
+        span= book.title
+      p Description:
+        span &nbsp
+        span= book.description
+      //TẠO KHOẢN CÁCH
+      span &nbsp; 
+      a(href='/user/update/' + book.id) Update
+      span &nbsp; 
+      a(href='/user/delete/' + book.id) Delete
