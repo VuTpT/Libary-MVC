@@ -35,16 +35,6 @@ router.get('/update/:id', function(request, response) {
   response.render('books/update');
 });
 
-router.post('/update/:id', function(request, response) {
-
-  db.get('books')
-    .find({ id : request.params.id })
-    .assign({ title: request.body.title })
-    .write()
-  
-  response.redirect('/');
-});
-
 //Delete books
 router.get('/delete/:id', function(request, response) {
   var id = request.params.id;
@@ -57,10 +47,35 @@ router.get('/delete/:id', function(request, response) {
   response.redirect('/');
 });
 
+//Create User
+router.get('/login', function(request, response) {
+  response.render('user/create');
+});
+
+//Edit books
+router.post('/update/:id', function(request, response) {
+
+  db.get('books')
+    .find({ id : request.params.id })
+    .assign({ title: request.body.title })
+    .write()
+  
+  response.redirect('/');
+});
+
 //Create books  
 router.post('/create', function(request, response) {
   db.get('books')
     .push({ id: shortid.generate(),title: request.body.title, description : request.body.description })
+    .value()
+    .id;
+  response.redirect('/');
+})
+
+//Create user  
+router.post('/user/create', function(request, response) {
+  db.get('users')
+    .push({ id: shortid.generate(), name: request.body.name })
     .value()
     .id;
   response.redirect('/');
