@@ -1,14 +1,6 @@
 const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
-const shortid = require('shortid');
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync('db.json');
-const db = low(adapter);
-
-
-db.defaults({ books: []}).write();
+var userRouter = require("./routes/user.route");
 
 app.set("view engine", "pug");
 app.set("users", "./views/users");
@@ -20,67 +12,7 @@ app.get('/', function(request, response) {
   response.send('Welcome to libary!');
 })
 
-//Display screen
-app.get('/route', function(request, response) {
-  response.render('users/index', {
-    books : db.get('books').value()
-  });
-})
-
-//Search books
-app.get('/route/search', function (request, response) {
-  var q = request.query.q
-  var matchedTitle = db
-    .get('books')
-    .value()
-    .filter(function(value) {
-      return q ? value.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
-    });
-    response.render('users/index', {
-      books: matchedTitle
-  });
-});
-
-//Create books
-app.get('/route/create', function(request, response) {
-  response.render('users/create');
-});
-
-//Edit books
-app.get('/route/update/:id', function(request, response) {
-  response.render('users/update');
-});
-
-app.post('/route/update/:id', function(request, response) {
-
-  db.get('books')
-    .find({ id : request.params.id })
-    .assign({ title: request.body.title })
-    .write()
-  
-  response.redirect('/route');
-});
-
-//Delete books
-app.get('/route/delete/:id', function(request, response) {
-  var id = request.params.id;
-  
-  var book = db
-  .get('books')
-  .remove({ id : id })
-  .write();
-  
-  response.redirect('/route');
-});
-
-//Create books  
-app.post('/route/create', function(request, response) {
-  db.get('books')
-    .push({ id: shortid.generate(),title: request.body.title, description : request.body.description })
-    .value()
-    .id;
-  response.redirect('/route');
-})
+app.use('/route', userRouter)
 
 // listen for requests :)
 app.listen(process.env.PORT, () => {
