@@ -87,7 +87,7 @@ router.post('/users/create', function(request, response) {
     .push({ id: shortid.generate(), name: request.body.name })
     .value()
     .id;
-  response.redirect('/');
+  response.redirect('/route');
 })
 
 module.exports = router;

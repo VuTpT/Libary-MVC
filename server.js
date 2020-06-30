@@ -10,11 +10,6 @@ app.set("user", "./views/user");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-app.get('/', function(request, response) {
-  response.send('Welcome to libary!');
-})
-
 app.use('/route', userRouter);
 
 

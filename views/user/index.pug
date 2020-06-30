@@ -1,6 +1,6 @@
 h1 Users List
 
-form(action="/users/create", method="GET")
+form(action="/route/users/create")
 
   button Add User
 
@@ -9,11 +9,9 @@ form(action="/users/search", method="GET")
   input(type="text", name= "q")
     
   button Search
-//
-  ul
-    each user in users
-      li
-        p Name:
+ul
+  each user in users
+    li=
      //TẠO KHOẢN CÁCH
       span &nbsp; 
       a(href='/user/update/' + book.id) Update
