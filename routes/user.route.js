@@ -12,7 +12,7 @@ router.get('/login', function(request, response) {
 });
 
 //Search users
-router.get('/users/search', function (request, response) {
+router.get('/search', function (request, response) {
   var q = request.query.q
   var matchedTitle = db
     .get('users')
@@ -26,17 +26,17 @@ router.get('/users/search', function (request, response) {
 });
 
 //Create users
-router.get('/users/create', function(request, response) {
+router.get('/create', function(request, response) {
   response.render('user/create');
 });
 
 //Edit users
-router.get('/users/update/:id', function(request, response) {
+router.get('/update/:id', function(request, response) {
   response.render('user/update');
 });
 
 //Delete users
-router.get('/users/delete/:id', function(request, response) {
+router.get('/delete/:id', function(request, response) {
   var id = request.params.id;
   
   var book = db
@@ -50,7 +50,7 @@ router.get('/users/delete/:id', function(request, response) {
 // METHOD POST
 
 //Edit users
-router.post('/users/update/:id', function(request, response) {
+router.post('/update/:id', function(request, response) {
 
   db.get('users')
     .find({ id : request.params.id })
@@ -61,7 +61,7 @@ router.post('/users/update/:id', function(request, response) {
 });
 
 //Create user  
-router.post('/users/create', function(request, response) {
+router.post('/create', function(request, response) {
   db.get('users')
     .push({ id: shortid.generate(), name: request.body.name })
     .value()
