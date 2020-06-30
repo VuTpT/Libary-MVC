@@ -4,12 +4,19 @@ const bodyParser = require('body-parser');
 const shortid = require('shortid');
 var db = require('../db');
 
-//Display screen
+//Display screen books
 router.get('/', function(request, response) {
   response.render('books/index', {
     books : db.get('books').value()
   });
-})
+});
+
+//Display screen users
+router.get('/login', function(request, response) {
+  response.render('user/index', {
+    users : db.get('users').value()
+  });
+});
 
 //Search books
 router.get('/search', function (request, response) {
@@ -30,6 +37,11 @@ router.get('/create', function(request, response) {
   response.render('books/create');
 });
 
+//Create users
+router.get('/users/create', function(request, response) {
+  response.render('user/create');
+});
+
 //Edit books
 router.get('/update/:id', function(request, response) {
   response.render('books/update');
@@ -47,10 +59,7 @@ router.get('/delete/:id', function(request, response) {
   response.redirect('/');
 });
 
-//Create User
-router.get('/login', function(request, response) {
-  response.render('user/create');
-});
+// METHOD POST
 
 //Edit books
 router.post('/update/:id', function(request, response) {
@@ -73,7 +82,7 @@ router.post('/create', function(request, response) {
 })
 
 //Create user  
-router.post('/user/create', function(request, response) {
+router.post('/users/create', function(request, response) {
   db.get('users')
     .push({ id: shortid.generate(), name: request.body.name })
     .value()

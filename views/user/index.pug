@@ -1,25 +1,20 @@
-h1 Book List
+h1 Users List
 
-form(action="/user/create")
+form(action="/users/create", method="GET")
 
-  button Add Title
+  button Add User
 
-form(action="/user/search", method="GET")
+form(action="/users/search", method="GET")
 
   input(type="text", name= "q")
     
   button Search
-
-ul
-  each book in books
-    li
-      p Title:
-        span &nbsp
-        span= book.title
-      p Description:
-        span &nbsp
-        span= book.description
-      //TẠO KHOẢN CÁCH
+//
+  ul
+    each user in users
+      li
+        p Name:
+     //TẠO KHOẢN CÁCH
       span &nbsp; 
       a(href='/user/update/' + book.id) Update
       span &nbsp; 
