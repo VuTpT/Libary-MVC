@@ -9,10 +9,11 @@ form(action="/users/search", method="GET")
   input(type="text", name= "q")
     
   button Search
+  
 ul
   each user in users
-    li=
-     //TẠO KHOẢN CÁCH
+    li= user.name
+    //TẠO KHOẢN CÁCH
       span &nbsp; 
       a(href='/user/update/' + book.id) Update
       span &nbsp; 

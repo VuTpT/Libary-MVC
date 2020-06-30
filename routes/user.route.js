@@ -1,4 +1,4 @@
-var express = require('express');
+var sponse.redirect('/routevar express = require('express');
 var router = express.Router();
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
@@ -84,10 +84,9 @@ router.post('/create', function(request, response) {
 //Create user  
 router.post('/users/create', function(request, response) {
   db.get('users')
-    .push({ id: shortid.generate(), name: request.body.name })
+    .push({ id: shortid.generate response.redirect('/login  response.redirect('/');)
     .value()
     .id;
-  response.redirect('/route');
-})
+  respo)
 
 module.exports = router;
