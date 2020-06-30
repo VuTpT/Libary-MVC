@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 var userRouter = require("./routes/user.route");
+var user
 
 app.set("view engine", "pug");
 app.set("users", "./views/users");
