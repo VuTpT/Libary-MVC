@@ -1,4 +1,4 @@
-var sponse.redirect('/routevar express = require('express');
+var express = require('express');
 var router = express.Router();
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
@@ -29,6 +29,20 @@ router.get('/search', function (request, response) {
     });
     response.render('books/index', {
       books: matchedTitle
+  });
+});
+
+//Search users
+router.get('/users/search', function (request, response) {
+  var q = request.query.q
+  var matchedTitle = db
+    .get('users')
+    .value()
+    .filter(function(value) {
+      return q ? value.name.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
+    });
+    response.render('user/index', {
+      users: matchedTitle
   });
 });
 
@@ -84,9 +98,10 @@ router.post('/create', function(request, response) {
 //Create user  
 router.post('/users/create', function(request, response) {
   db.get('users')
-    .push({ id: shortid.generate response.redirect('/login  response.redirect('/');)
+    .push({ id: shortid.generate(), name: request.body.name })
     .value()
     .id;
-  respo)
+  response.redirect('/route/login');
+})
 
 module.exports = router;
