@@ -21,7 +21,7 @@ form(action="/transaction/search", method="GET")
 
 label Users:
 span &nbsp
-select
+select(name='user')
   each user in users
     option(value= user.userID) #{user.name}
     
@@ -29,7 +29,7 @@ span &nbsp
 
 label Books:
 span &nbsp
-select
+select(name='book')
   each book in books
     option(value= book.bookID) #{book.title}  
 span &nbsp     
