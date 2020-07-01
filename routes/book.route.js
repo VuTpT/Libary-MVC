@@ -44,7 +44,7 @@ router.get('/delete/:id', function(request, response) {
   .remove({ id : id })
   .write();
   
-  response.redirect('/');
+  response.redirect('/route');
 });
 
 // METHOD POST
@@ -57,7 +57,7 @@ router.post('/update/:id', function(request, response) {
     .assign({ title: request.body.title })
     .write()
   
-  response.redirect('/');
+  response.redirect('/route');
 });
 
 //Create books  
@@ -66,7 +66,7 @@ router.post('/create', function(request, response) {
     .push({ id: shortid.generate(),title: request.body.title, description : request.body.description })
     .value()
     .id;
-  response.redirect('/');
+  response.redirect('/route');
 })
 
 module.exports = router;
