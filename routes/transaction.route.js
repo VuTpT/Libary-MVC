@@ -10,11 +10,17 @@ router.get('/view', function(request, response) {
   var books = db.get('books').value();
   var transactions = db.get('transactions').value();
   
+  var data = [];
+  transactions.map(function(value, index){
+    data[index]['transactionsID'] = value.transactions;
+    data[index]['books'] =  db.get('books').find({ bookid : request.params.bookId }).value();
+    data[index]['users'] =  db.get('users').find({ userid : request.params.userId }).value();
+  })
   
-  response.render('user/index', {
-    books : books;
-    users : users;
-    transactions : transaction
+  response.render('transactions/index', {
+    books : books,
+    users : users,
+    transactions : transactions
   });
 });
 

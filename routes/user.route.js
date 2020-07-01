@@ -31,17 +31,17 @@ router.get('/create', function(request, response) {
 });
 
 //Edit users
-router.get('/update/:id', function(request, response) {
+router.get('/update/:userId', function(request, response) {
   response.render('user/update');
 });
 
 //Delete users
-router.get('/delete/:id', function(request, response) {
-  var id = request.params.id;
+router.get('/delete/:userId', function(request, response) {
+  var userId = request.params.userId;
   
   var book = db
   .get('users')
-  .remove({ id : id })
+  .remove({ id : userId })
   .write();
   
   response.redirect('/users/login');
