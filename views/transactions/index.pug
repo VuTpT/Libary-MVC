@@ -3,7 +3,6 @@ style.
     border: 1px solid black;
     }
   
-
 h1 Transactions Libary
 
 form(action="/transactions/create")
@@ -14,7 +13,7 @@ form(action="/route")
 
   button Back
 
-form(action="/transactions/search", method="GET")
+form(action="/transaction/search", method="GET")
 
   input(type="text", name= "q")
     
@@ -35,7 +34,7 @@ select
     option(value= book.bookID) #{book.title}  
 span &nbsp     
 
-form(action="/transactions/create", method="POST")
+form(action="/transaction/create", method="POST")
 
   button Add
 
