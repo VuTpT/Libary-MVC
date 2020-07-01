@@ -17,25 +17,22 @@ form(action="/transaction/search", method="GET")
 
   input(type="text", name= "q")
     
-  button Search
-
-label Users:
-span &nbsp
-select(name='user')
-  each user in users
-    option(value= user.userID) #{user.name}
-    
-span &nbsp  
-
-label Books:
-span &nbsp
-select(name='book')
-  each book in books
-    option(value= book.bookID) #{book.title}  
-span &nbsp     
+  button Search     
 
 form(action="/transaction/create", method="POST")
+  label Users:
+  span &nbsp
+  select(name='user')
+    each user in users
+      option(value= user.userID) #{user.name}
+    span &nbsp  
 
+  label Books:
+  span &nbsp
+  select(name='book')
+    each book in books
+      option(value= book.bookID) #{book.title}  
+    span &nbsp
   button Add
 
 table
