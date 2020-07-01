@@ -41,7 +41,7 @@ router.get('/delete/:userId', function(request, response) {
   
   var book = db
   .get('users')
-  .remove({ id : userId })
+  .remove({ userId : userId })
   .write();
   
   response.redirect('/users/login');
@@ -50,10 +50,10 @@ router.get('/delete/:userId', function(request, response) {
 // METHOD POST
 
 //Edit users
-router.post('/update/:id', function(request, response) {
+router.post('/update/:userId', function(request, response) {
 
   db.get('users')
-    .find({ id : request.params.id })
+    .find({ userId : request.params.userId })
     .assign({ name: request.body.name })
     .write()
   
@@ -63,7 +63,7 @@ router.post('/update/:id', function(request, response) {
 //Create user  
 router.post('/create', function(request, response) {
   db.get('users')
-    .push({ id: shortid.generate(), name: request.body.name })
+    .push({ userId : shortid.generate(), name: request.body.name })
     .value()
     .id;
   response.redirect('/users/login');

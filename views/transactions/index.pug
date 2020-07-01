@@ -34,14 +34,11 @@ form(action="/transactions/search", method="GET")
       
 table
   tr
-    th UserID
-    th BookID
-  tr 
-    td
-      ul
-        each user in users
-          li= user.name
-    td
-      ul
-        each book in books
-          li= book.title
+    th ID
+    th User
+    th Book
+  tr
+    td= transaction.transactionID
+    td= transaction.users
+    td= transaction.books
+    

@@ -31,17 +31,17 @@ router.get('/create', function(request, response) {
 });
 
 //Edit books
-router.get('/update/:id', function(request, response) {
+router.get('/update/:bookId', function(request, response) {
   response.render('books/update');
 });
 
 //Delete books
-router.get('/delete/:id', function(request, response) {
-  var id = request.params.id;
+router.get('/delete/:bookId', function(request, response) {
+  var bookId = request.params.bookId;
   
   var book = db
   .get('books')
-  .remove({ id : id })
+  .remove({ bookId : bookId })
   .write();
   
   response.redirect('/route');
@@ -50,10 +50,10 @@ router.get('/delete/:id', function(request, response) {
 // METHOD POST
 
 //Edit books
-router.post('/update/:id', function(request, response) {
+router.post('/update/:bookId', function(request, response) {
 
   db.get('books')
-    .find({ id : request.params.id })
+    .find({ bookId : request.params.bookId })
     .assign({ title: request.body.title })
     .write()
   
@@ -63,7 +63,7 @@ router.post('/update/:id', function(request, response) {
 //Create books  
 router.post('/create', function(request, response) {
   db.get('books')
-    .push({ id: shortid.generate(),title: request.body.title, description : request.body.description })
+    .push({ bookId : shortid.generate(),title: request.body.title, description : request.body.description })
     .value()
     .id;
   response.redirect('/route');

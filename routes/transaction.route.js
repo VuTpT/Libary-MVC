@@ -12,15 +12,17 @@ router.get('/view', function(request, response) {
   
   var data = [];
   transactions.map(function(value, index){
-    data[index]['transactionsID'] = value.transactions;
-    data[index]['books'] =  db.get('books').find({ bookid : request.params.bookId }).value();
-    data[index]['users'] =  db.get('users').find({ userid : request.params.userId }).value();
+    data[index]['transactionsID'] = value.transactionID;
+    data[index]['books'] =  db.get('books').find({ bookid : request.params.bookId }).value().title;
+    data[index]['users'] =  db.get('users').find({ userid : request.params.userId }).value().name;
   })
   
+  console.log(data);
+  
   response.render('transactions/index', {
+    transactions : data,
     books : books,
-    users : users,
-    transactions : transactions
+    users : users
   });
 });
 
