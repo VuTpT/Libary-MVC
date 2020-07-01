@@ -6,8 +6,15 @@ var db = require('../db');
 
 //Display screen transactions
 router.get('/view', function(request, response) {
-  response.render('transactions/index', {
-    transactions : db.get('transactions').value()
+  var users = db.get('users').value();
+  var books = db.get('books').value();
+  var transactions = db.get('transactions').value();
+  
+  
+  response.render('user/index', {
+    books : books;
+    users : users;
+    transactions : transaction
   });
 });
 

@@ -32,10 +32,16 @@ form(action="/transactions/search", method="GET")
       span &nbsp; 
       a(href='/transactions/delete/' + transaction.id) Delete
       
-table(style='width:100%')
+table
   tr
-    th Selecte
-    th Option
+    th UserID
+    th BookID
   tr 
-    td transaction.userid
-    td transaction.bookid
+    td
+      ul
+        each user in users
+          li= user.name
+    td
+      ul
+        each book in books
+          li= book.title
