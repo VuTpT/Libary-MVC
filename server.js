@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/route', bookRouter);
-app.use('/route/users', userRouter);
+app.use('/users', userRouter);
 
 
 // listen for requests :)

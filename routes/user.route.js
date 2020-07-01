@@ -44,7 +44,7 @@ router.get('/delete/:id', function(request, response) {
   .remove({ id : id })
   .write();
   
-  response.redirect('/route/login');
+  response.redirect('/login');
 });
 
 // METHOD POST
@@ -57,7 +57,7 @@ router.post('/update/:id', function(request, response) {
     .assign({ name: request.body.name })
     .write()
   
-  response.redirect('/route/login');
+  response.redirect('/login');
 });
 
 //Create user  
@@ -66,7 +66,7 @@ router.post('/create', function(request, response) {
     .push({ id: shortid.generate(), name: request.body.name })
     .value()
     .id;
-  response.redirect('/route/login');
+  response.redirect('/login');
 })
 
 module.exports = router;
