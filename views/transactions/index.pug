@@ -19,26 +19,34 @@ form(action="/transactions/search", method="GET")
   input(type="text", name= "q")
     
   button Search
-//  
-  ul
-  each transaction in transactions
-    li
-      p Name:
-        span &nbsp
-        span= transaction.name
-        //TẠO KHOẢN CÁCH
-      span &nbsp; 
-      a(href='/transactions/update/' + transaction.id) Update
-      span &nbsp; 
-      a(href='/transactions/delete/' + transaction.id) Delete
-      
+
+label Users:
+span &nbsp
+select
+  each user in users
+    option(value= user.userID) #{user.name}
+    
+span &nbsp  
+
+label Books:
+span &nbsp
+select
+  each book in books
+    option(value= book.bookID) #{book.title}  
+span &nbsp     
+
+form(action="/transactions/create", method="POST")
+
+  button Add
+
 table
   tr
     th ID
     th User
     th Book
-  tr
-    td= transaction.transactionID
-    td= transaction.users
-    td= transaction.books
+  each transaction in transactions
+    tr
+      td= transaction.transactionID
+      td= transaction.users
+      td= transaction.books
     

@@ -26,4 +26,13 @@ router.get('/view', function(request, response) {
   });
 });
 
+//Create transactions  
+router.post('/create', function(request, response) {
+  db.get('transactions')
+    .push({ transactionId : shortid.generate(),title: request.body.title, description : request.body.description })
+    .value()
+    .id;
+  response.redirect('/route');
+})
+
 module.exports = router;
