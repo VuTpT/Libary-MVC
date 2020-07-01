@@ -13,8 +13,8 @@ form(action="/transactions/search", method="GET")
   input(type="text", name= "q")
     
   button Search
-  
-ul
+//  
+  ul
   each transaction in transactions
     li
       p Name:
@@ -25,3 +25,11 @@ ul
       a(href='/transactions/update/' + transaction.id) Update
       span &nbsp; 
       a(href='/transactions/delete/' + transaction.id) Delete
+      
+table(style='width:100%')
+  tr
+    th Selecte
+    th Option
+  tr 
+    td transaction.userid
+    td transaction.bookid
