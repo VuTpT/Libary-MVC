@@ -41,7 +41,7 @@ router.get('/search', function (request, response) {
     .get('transactions')
     .value()
     .filter(function(value) {
-      return q ? value.userId.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
+      return q ? value.transactionId.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
     });
     response.render('transactions/search', {
       transactions : matchedUserId,
