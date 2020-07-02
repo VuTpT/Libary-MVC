@@ -42,7 +42,7 @@ body
         td= transaction.transactionId       
         td= transaction.userId 
         td= transaction.bookId
-        td
+        td= transaction.done
           form(action="/transaction/done", method="GET") 
             button(type="submit", name= "isComplete") Done
     

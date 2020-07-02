@@ -52,12 +52,12 @@ module.exports.done = function (request, response) {
   var matchedId = db.get('transactions')
     .value()
     .filter(function(value) {
-      return isComplete ? value.transactionId.toLowerCase().indexOf(isComplete.toLowerCase()) !== -1 : true;
+      return isComplete ? value.transactionId.indexOf(isComplete) !== -1 : true;
     });
   response.render('transactions/complete', {
       transactions : matchedId,
       bookId : matchedId,
-      userId : matchedId     
+      userId : matchedId,
   });
 };
 
@@ -65,18 +65,20 @@ module.exports.done = function (request, response) {
 
 module.exports.postCreate = function(request, response) {
   db.get('transactions')
-    .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book })
+    .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book , login : 'Mua' })
     .write();
   
   response.redirect('/transaction/view');
 };
 
 module.exports.postDone = function(request, response) {
-    db.get('users')
-    .push({ done : 'Hoàn Thành' })
-    .value()
-    .id;
-  response.redirect('/transaction/view');
+  
+  db.get('transactions')
+    .find({ login : 'Mua' })
+    .assign({ login : 'Hoan Thanh' })
+    .write()
+  
+  response.redirect('/transaction/complete');
 };
 
 
