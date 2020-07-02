@@ -46,6 +46,6 @@ body
           if transaction.isComplete
             a(href="#") True
           else
-            a(href="/transaction/complete/" +  transaction.isComplete ) False
+            a(href="/transaction/"+  transaction.transactionId + "/complete" ) False
           
     

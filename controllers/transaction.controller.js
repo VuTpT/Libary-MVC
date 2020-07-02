@@ -7,7 +7,6 @@ module.exports.view = function(request, response) {
   var users = db.get('users').value();
   var books = db.get('books').value();
   var transactions = db.get('transactions').value();
-  var isComplete = db.get('transactions').value();
   
   var data = [];
   transactions.map(function (value, index){
@@ -30,8 +29,7 @@ module.exports.view = function(request, response) {
   response.render('transactions/index', {
     transactions : data,
     books : books,
-    users : users,
-    isComplete : data
+    users : users
   });
 };
 
@@ -53,8 +51,6 @@ module.exports.search = function (request, response) {
 // METHOD POST
 
 module.exports.postCreate = function(request, response) {
-  var login = ['Mua']
-  var logout = request.body.login
   db.get('transactions')
     .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book })
     .write()
@@ -63,11 +59,11 @@ module.exports.postCreate = function(request, response) {
   response.redirect('/transaction/view');
 };
 
-module.exports.postComplete = function(request, response) {
+module.exports.isComplete = function(request, response) {
   
   db.get('transactions')
-    .find({ logout : request.paramas.logout })
-    .assign({ logout : 'Hoan Thanh' })
+    .find({ transactionId : request.params.transactionId })
+    .assign({ isComplete : true })
     .write()
   
   response.redirect('/transaction/view');
