@@ -6,7 +6,7 @@ module.exports.login = function(request, response) {
   response.render('user/index', {
     users : db.get('users').value()
   });
-}
+};
 
 module.exports.search = function (request, response) {
   var q = request.query.q
@@ -19,15 +19,15 @@ module.exports.search = function (request, response) {
     response.render('user/index', {
       users: matchedTitle
   });
-}
+};
 
 module.exports.create = function(request, response) {
   response.render('user/create');
-}
+};
 
 module.exports.update = function(request, response) {
   response.render('user/update');
-}
+};
 
 module.exports.delete = function(request, response) {
   var userId = request.params.userId;
@@ -38,7 +38,9 @@ module.exports.delete = function(request, response) {
   .write();
   
   response.redirect('/users/login');
-}
+};
+
+// METHOD POST
 
 module.exports.postUpdate = function(request, response) {
 
@@ -48,7 +50,7 @@ module.exports.postUpdate = function(request, response) {
     .write()
   
   response.redirect('/users/login');
-}
+};
 
 module.exports.postCreate = function(request, response) {
   db.get('users')
@@ -56,6 +58,6 @@ module.exports.postCreate = function(request, response) {
     .value()
     .id;
   response.redirect('/users/login');
-}
+};
 
 

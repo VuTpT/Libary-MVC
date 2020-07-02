@@ -1,73 +1,28 @@
 var express = require('express');
 var router = express.Router();
-const bodyParser = require('body-parser');
-const shortid = require('shortid');
-var db = require('../db');
 var bookController = require("../controllers/book.controller");
 
 //Display screen books
-router.get('/', function(request, response) {
-  response.render('books/index', {
-    books : db.get('books').value()
-  });
-});
+router.get('/', bookController.show);
 
 //Search books
-router.get('/search', function (request, response) {
-  var q = request.query.q
-  var matchedTitle = db
-    .get('books')
-    .value()
-    .filter(function(value) {
-      return q ? value.title.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
-    });
-    response.render('books/index', {
-      books: matchedTitle
-  });
-});
+router.get('/search', bookController.search);
 
 //Create books
-router.get('/create', function(request, response) {
-  response.render('books/create');
-});
+router.get('/create', bookController.create);
 
-//Edit books
-router.get('/update/:bookId', function(request, response) {
-  response.render('books/update');
-});
+//Update books
+router.get('/update/:bookId', bookController.update);
 
 //Delete books
-router.get('/delete/:bookId', function(request, response) {
-  var bookId = request.params.bookId;
-  
-  var book = db
-  .get('books')
-  .remove({ bookId : bookId })
-  .write();
-  
-  response.redirect('/route');
-});
+router.get('/delete/:bookId', bookController.delete);
 
 // METHOD POST
 
-//Edit books
-router.post('/update/:bookId', function(request, response) {
-
-  db.get('books')
-    .find({ bookId : request.params.bookId })
-    .assign({ title: request.body.title })
-    .write()
-  
-  response.redirect('/route');
-});
+//Update books
+router.post('/update/:bookId', bookController.postUpdate);
 
 //Create books  
-router.post('/create', function(request, response) {
-  db.get('books')
-    .push({ bookId : shortid.generate(),title: request.body.title, description : request.body.description })
-    .value()
-    .id;
-  response.redirect('/route');
-})
+router.post('/create', bookController.postCreate)
 
 module.exports = router;
