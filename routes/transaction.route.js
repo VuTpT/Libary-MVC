@@ -37,14 +37,16 @@ router.get('/view', function(request, response) {
 //Search userId
 router.get('/search', function (request, response) {
   var q = request.query.q
-  var matchedTitle = db
+  var matchedUserId = db
     .get('transactions')
     .value()
     .filter(function(value) {
       return q ? value.userId.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
     });
     response.render('transactions/search', {
-      transactions: matchedTitle
+      transactions : matchedUserId,
+      bookId : matchedUserId,
+      userId : matchedUserId
   });
 });
 
