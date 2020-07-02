@@ -14,23 +14,37 @@ router.get('/view', function(request, response) {
   transactions.map(function (value, index){
     data[index] = {};
     data[index]['transactionId'] = value.transactionId;
-    data[index]['user'] = db
+    data[index]['userId'] = db
       .get('users')
       .find({ userId: value.userId })
       .value()
-      .name
-    data[index]['books'] = db
-      .get('book')
+      .name;
+    data[index]['bookId'] = db
+      .get('books')
       .find({ bookId: value.bookId })
       .value()
-      .title
+      .title;
   });
   console.log(data);
   
   response.render('transactions/index', {
     transactions : data,
-    books : data,
-    users : data
+    books : books,
+    users : users
+  });
+});
+
+//Search userId
+router.get('/search', function (request, response) {
+  var q = request.query.q
+  var matchedTitle = db
+    .get('transactions')
+    .value()
+    .filter(function(value) {
+      return q ? value.userId.toLowerCase().indexOf(q.toLowerCase()) !== -1 : true;
+    });
+    response.render('transactions/search', {
+      transactions: matchedTitle
   });
 });
 
