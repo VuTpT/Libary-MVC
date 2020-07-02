@@ -3,6 +3,7 @@ var router = express.Router();
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
 var db = require('../db');
+var bookController = require("../controllers/book.controller");
 
 //Display screen books
 router.get('/', function(request, response) {

@@ -3,6 +3,7 @@ var router = express.Router();
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
 var db = require('../db');
+var transactionController = require("../controllers/transaction.controller");
 
 //Display screen transactions
 router.get('/view', function(request, response) {
