@@ -52,7 +52,12 @@ module.exports.done = function (request, response) {
     .value()
     .filter(function(value) {
       return isComplete ? value.transactionId.toLowerCase().indexOf(isComplete.toLowerCase()) !== -1 : true;
-    });  
+    });
+  response.render('transactions/complete', {
+      transactions : matchedId,
+      bookId : matchedId,
+      userId : matchedId     
+  });
 };
 
 // METHOD POST
@@ -61,6 +66,13 @@ module.exports.postCreate = function(request, response) {
   db.get('transactions')
     .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book })
     .write();
+  
+  response.redirect('/transaction/view');
+};
+
+module.exports.postDone = function(request, response) {
+    db.read()
+    console.log('State has been updated')
   
   response.redirect('/transaction/view');
 };
