@@ -36,9 +36,13 @@ body
       th ID
       th User
       th Book
+      th Logout
     each transaction in transactions
       tr
-        td= transaction.transactionId
-        td= transaction.userId
+        td= transaction.transactionId       
+        td= transaction.userId 
         td= transaction.bookId
+        td
+          form(action="/transaction/done", method="GET") 
+            button Done
     

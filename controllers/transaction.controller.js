@@ -11,14 +11,14 @@ module.exports.view = function(request, response) {
   transactions.map(function (value, index){
     data[index] = {};
     data[index]['transactionId'] = value.transactionId;
-    data[index]['user'] = db
+    data[index]['userId'] = db
       .get('users')
-      .find({ userId: JSON.stringify(value.userId) })
+      .find({ userId: value.userId })
       .value()
-      .;
-    data[index]['book'] = db
+      .name;
+    data[index]['bookId'] = db
       .get('books')
-      .find({ bookId: JSON.stringify(value.bookId) })
+      .find({ bookId: value.bookId })
       .value()
       .title;
   });

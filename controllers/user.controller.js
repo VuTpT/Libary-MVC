@@ -40,6 +40,10 @@ module.exports.delete = function(request, response) {
   response.redirect('/users/login');
 };
 
+module.export.done = function (request, response) {
+  
+}
+
 // METHOD POST
 
 module.exports.postUpdate = function(request, response) {
