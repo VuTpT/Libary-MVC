@@ -18,19 +18,19 @@ router.get('/view', function(request, response) {
       .get('users')
       .find({ userId: value.userId })
       .value()
-
+      .name
     data[index]['books'] = db
       .get('book')
       .find({ bookId: value.bookId })
       .value()
-      
+      .title
   });
   console.log(data);
   
   response.render('transactions/index', {
     transactions : data,
-    books : books,
-    users : users
+    books : data,
+    users : data
   });
 });
 

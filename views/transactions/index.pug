@@ -31,14 +31,14 @@ body
       span &nbsp
     button(type="submit") Add
 
-  table
+  table(style='width:100%')
     tr
       th ID
       th User
       th Book
     each transaction in transactions
       tr
-        td= transaction.transactionID
+        td= transaction.transactionId
         td= transaction.user
         td= transaction.book
     
