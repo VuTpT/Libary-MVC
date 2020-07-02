@@ -14,9 +14,8 @@ router.get('/view', function(request, response) {
   transactions.map(function(value, index){
     data[index] = {};
     data[index]['transactionId'] = value.transactionId;
-    data[index]['user'] = db.get('users').find({ userId: value.userId }).value().name;
+    data[index]['user'] = db.get('users').find({ userId: value.userId }).value();
     data[index]['book'] = db.get('books').find({ bookId: value.bookId }).value().title;
-  })
   
   console.log(data);
   
@@ -24,13 +23,14 @@ router.get('/view', function(request, response) {
     transactions : data,
     books : books,
     users : users
+    });
   });
 });
 
 //Create transactions  
 router.post('/create', function(request, response) {
   db.get('transactions')
-    .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book })
+    .push({ transactionId : shortid.generate(), userId : request.params.user, bookId: request.params.book })
     .write()
   
   response.redirect('/transaction/view');

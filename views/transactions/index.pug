@@ -2,47 +2,47 @@ style.
   table, tr, th, td {
     border: 1px solid black;
     }
-  
-h1 Transactions Libary
+body
+  h1 Transactions Libary
 
-form(action="/transactions/create")
+  form(action="/transaction/create")
 
-  button Add User
-  
-form(action="/route")
+    button Add User
 
-  button Back
+  form(action="/route")
 
-form(action="/transaction/search", method="GET")
+    button Back
 
-  input(type="text", name= "q")
-    
-  button Search     
+  form(action="/transaction/search", method="GET")
 
-form(action="/transaction/create", method="POST")
-  label Users:
-  span &nbsp
-  select(name='user')
-    each user in users
-      option(value= user.userID) #{user.name}
-    span &nbsp  
+    input(type="text", name= "q")
 
-  label Books:
-  span &nbsp
-  select(name='book')
-    each book in books
-      option(value= book.bookID) #{book.title}  
+    button Search     
+
+  form(action="/transaction/create", method="POST")
+    label Users:
     span &nbsp
-  button Add
+    select(name='user')
+      each user in users
+        option(value= user.userID) #{user.name}
+      span &nbsp  
 
-table
-  tr
-    th ID
-    th User
-    th Book
-  each transaction in transactions
+    label Books:
+    span &nbsp
+    select(name='book')
+      each book in books
+        option(value= book.bookID) #{book.title}  
+      span &nbsp
+    button Add
+
+  table
     tr
-      td= transaction.transactionID
-      td= transaction.user
-      td= transaction.book
+      th ID
+      th User
+      th Book
+    each transaction in transactions
+      tr
+        td= transaction.transactionID
+        td= transaction.user
+        td= transaction.book
     
