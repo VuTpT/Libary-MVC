@@ -42,7 +42,6 @@ body
         td= transaction.transactionId       
         td= transaction.userId 
         td= transaction.bookId
-        td= transaction.done
-          form(action="/transaction/done", method="GET") 
-            button(type="submit", name= "isComplete") Done
+        td Mua
+          a(href='/transaction/complete/' + transaction.transactionId) Done
     

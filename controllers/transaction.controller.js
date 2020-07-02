@@ -47,38 +47,39 @@ module.exports.search = function (request, response) {
   });
 };
 
-module.exports.done = function (request, response) {
-  var isComplete = request.query.isComplete
-  var matchedId = db.get('transactions')
-    .value()
-    .filter(function(value) {
-      return isComplete ? value.transactionId.indexOf(isComplete) !== -1 : true;
-    });
-  response.render('transactions/complete', {
-      transactions : matchedId,
-      bookId : matchedId,
-      userId : matchedId,
-  });
-};
+// module.exports.done = function (request, response) {
+//   var isComplete = request.query.isComplete
+//   var matchedId = db.get('transactions')
+//     .value()
+//     .filter(function(value) {
+//       return isComplete ? value.transactionId.indexOf(isComplete) !== -1 : true;
+//     });
+//   response.render('transactions/complete', {
+//       transactions : matchedId,
+//       bookId : matchedId,
+//       userId : matchedId,
+//   });
+// };
 
 // METHOD POST
 
 module.exports.postCreate = function(request, response) {
   db.get('transactions')
     .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book , login : 'Mua' })
-    .write();
+    .write()
+    .id;
   
   response.redirect('/transaction/view');
 };
 
-module.exports.postDone = function(request, response) {
+module.exports.postComplete = function(request, response) {
   
   db.get('transactions')
     .find({ login : 'Mua' })
     .assign({ login : 'Hoan Thanh' })
     .write()
   
-  response.redirect('/transaction/complete');
+  response.redirect('/transaction/view');
 };
 
 
