@@ -13,4 +13,6 @@ router.get('/done', transactionController.done);
 //Create transactions  
 router.post('/create', transactionController.postCreate)
 
+router.post('/:transactionId/complete', transactionController.postDone);
+
 module.exports = router;

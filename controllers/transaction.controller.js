@@ -6,6 +6,7 @@ module.exports.view = function(request, response) {
   var users = db.get('users').value();
   var books = db.get('books').value();
   var transactions = db.get('transactions').value();
+  var done = db.get('transactions').value();
   
   var data = [];
   transactions.map(function (value, index){
@@ -71,9 +72,10 @@ module.exports.postCreate = function(request, response) {
 };
 
 module.exports.postDone = function(request, response) {
-    db.read()
-    console.log('State has been updated')
-  
+    db.get('users')
+    .push({ done : 'Hoàn Thành' })
+    .value()
+    .id;
   response.redirect('/transaction/view');
 };
 
