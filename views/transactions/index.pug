@@ -44,5 +44,5 @@ body
         td= transaction.bookId
         td
           form(action="/transaction/done", method="GET") 
-            button Done
+            button(type="submit", name= "isComplete") Done
     

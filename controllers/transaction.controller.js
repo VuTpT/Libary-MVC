@@ -46,6 +46,15 @@ module.exports.search = function (request, response) {
   });
 };
 
+module.exports.done = function (request, response) {
+  var isComplete = request.query.isComplete
+  var matchedId = db.get('transactions')
+    .value()
+    .filter(function(value) {
+      return isComplete ? value.transactionId.toLowerCase().indexOf(isComplete.toLowerCase()) !== -1 : true;
+    });  
+};
+
 // METHOD POST
 
 module.exports.postCreate = function(request, response) {

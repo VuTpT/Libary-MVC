@@ -8,6 +8,8 @@ router.get('/view', transactionController.view);
 //Search userId
 router.get('/search', transactionController.search);
 
+router.get('/done', transactionController.done);
+
 //Create transactions  
 router.post('/create', transactionController.postCreate)
 
