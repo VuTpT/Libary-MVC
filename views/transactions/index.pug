@@ -5,10 +5,6 @@ style.
 body
   h1 Transactions Libary
 
-  form(action="/transaction/create")
-
-    button Add User
-
   form(action="/route")
 
     button Back
@@ -25,7 +21,7 @@ body
     select(name='user')
       each user in users
         option(value= user.userId) #{user.name}
-      span &nbsp  
+    span &nbsp  
 
     label Books:
     span &nbsp
@@ -33,7 +29,7 @@ body
       each book in books
         option(value= book.bookId) #{book.title}  
       span &nbsp
-    button Add
+    button(type="submit") Add
 
   table
     tr
