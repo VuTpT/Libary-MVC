@@ -24,14 +24,14 @@ body
     span &nbsp
     select(name='user')
       each user in users
-        option(value= user.userID) #{user.name}
+        option(value= user.userId) #{user.name}
       span &nbsp  
 
     label Books:
     span &nbsp
     select(name='book')
       each book in books
-        option(value= book.bookID) #{book.title}  
+        option(value= book.bookId) #{book.title}  
       span &nbsp
     button Add
 
