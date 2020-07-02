@@ -8,7 +8,7 @@ router.get('/view', transactionController.view);
 //Search userId
 router.get('/search', transactionController.search);
 
-router.post('/complete/:transactionId', transactionController.postComplete);
+router.post('/:transactionId/complete', transactionController.postComplete);
 
 //Create transactions  
 router.post('/create', transactionController.postCreate)

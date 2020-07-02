@@ -42,6 +42,10 @@ body
         td= transaction.transactionId       
         td= transaction.userId 
         td= transaction.bookId
-        td 
+        td
+          if transaction.isComplete
+            a(href="#") True
+          else
+            a(href="/transaction/complete/" +  transaction.isComplete ) False
           
     

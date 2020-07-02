@@ -40,12 +40,19 @@
   ],
   "transactions": [
     {
-      "transactionId": "YGYDOjm9H",
+      "transactionId": "o1GsT8PlA",
       "userId": "ofw2S6WI_",
       "bookId": "1mWuehzHk"
     },
     {
-      "logout": "Mua"
+      "transactionId": "fy6Bml5wl",
+      "userId": "ofw2S6WI_",
+      "bookId": "1mWuehzHk"
+    },
+    {
+      "transactionId": "ML0tErBSk",
+      "userId": "ofw2S6WI_",
+      "bookId": "1mWuehzHk"
     }
   ]
 }

@@ -1,12 +1,13 @@
 var db = require('../db');
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
+var logout = ['Mua'];
 
 module.exports.view = function(request, response) {
   var users = db.get('users').value();
   var books = db.get('books').value();
   var transactions = db.get('transactions').value();
-  var done = db.get('transactions').value();
+  var isComplete = db.get('transactions').value();
   
   var data = [];
   transactions.map(function (value, index){
@@ -22,10 +23,7 @@ module.exports.view = function(request, response) {
       .find({ bookId: value.bookId })
       .value()
       .title;
-    data[index]['logout'] = db
-      .get('transactions')
-      .push({logout : 'Mua'})
-      .write()
+    data[index]['isComplete'] = value.isComplete;
   });
   console.log(data);
   
@@ -33,7 +31,7 @@ module.exports.view = function(request, response) {
     transactions : data,
     books : books,
     users : users,
-    logout : transactions
+    isComplete : data
   });
 };
 
@@ -58,7 +56,7 @@ module.exports.postCreate = function(request, response) {
   var login = ['Mua']
   var logout = request.body.login
   db.get('transactions')
-    .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book , logout : logout })
+    .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book })
     .write()
     .id;
   
@@ -68,7 +66,7 @@ module.exports.postCreate = function(request, response) {
 module.exports.postComplete = function(request, response) {
   
   db.get('transactions')
-    .find({ logout : 'Mua' })
+    .find({ logout : request.paramas.logout })
     .assign({ logout : 'Hoan Thanh' })
     .write()
   
