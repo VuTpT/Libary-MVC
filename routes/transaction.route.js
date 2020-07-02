@@ -8,11 +8,10 @@ router.get('/view', transactionController.view);
 //Search userId
 router.get('/search', transactionController.search);
 
-router.get('/complete/:transactionId', transactionController.postComplete);
+router.post('/complete/:transactionId', transactionController.postComplete);
 
 //Create transactions  
 router.post('/create', transactionController.postCreate)
 
-// router.post('/complete/:transactionId', transactionController.postComplete);
 
 module.exports = router;

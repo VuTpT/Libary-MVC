@@ -28,7 +28,8 @@ module.exports.view = function(request, response) {
   response.render('transactions/index', {
     transactions : data,
     books : books,
-    users : users
+    users : users,
+    logout : data
   });
 };
 
@@ -47,25 +48,12 @@ module.exports.search = function (request, response) {
   });
 };
 
-// module.exports.done = function (request, response) {
-//   var isComplete = request.query.isComplete
-//   var matchedId = db.get('transactions')
-//     .value()
-//     .filter(function(value) {
-//       return isComplete ? value.transactionId.indexOf(isComplete) !== -1 : true;
-//     });
-//   response.render('transactions/complete', {
-//       transactions : matchedId,
-//       bookId : matchedId,
-//       userId : matchedId,
-//   });
-// };
-
 // METHOD POST
 
 module.exports.postCreate = function(request, response) {
+  
   db.get('transactions')
-    .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book , login : 'Mua' })
+    .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book , logout : 'Mua' })
     .write()
     .id;
   
@@ -75,8 +63,8 @@ module.exports.postCreate = function(request, response) {
 module.exports.postComplete = function(request, response) {
   
   db.get('transactions')
-    .find({ login : 'Mua' })
-    .assign({ login : 'Hoan Thanh' })
+    .find({ logout : 'Mua' })
+    .assign({ logout : 'Hoan Thanh' })
     .write()
   
   response.redirect('/transaction/view');
