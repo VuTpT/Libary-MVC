@@ -22,6 +22,10 @@ module.exports.view = function(request, response) {
       .find({ bookId: value.bookId })
       .value()
       .title;
+    data[index]['logout'] = db
+      .get('transactions')
+      .push({logout : 'Mua'})
+      .write()
   });
   console.log(data);
   
@@ -29,7 +33,7 @@ module.exports.view = function(request, response) {
     transactions : data,
     books : books,
     users : users,
-    logout : data
+    logout : transactions
   });
 };
 
@@ -51,9 +55,10 @@ module.exports.search = function (request, response) {
 // METHOD POST
 
 module.exports.postCreate = function(request, response) {
-  
+  var login = ['Mua']
+  var logout = request.body.login
   db.get('transactions')
-    .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book , logout : 'Mua' })
+    .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book , logout : logout })
     .write()
     .id;
   

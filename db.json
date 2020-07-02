@@ -40,54 +40,11 @@
   ],
   "transactions": [
     {
-      "transactionId": "DOACA059X",
-      "userId": "ofw2S6WI_",
-      "bookId": "1mWuehzHk",
-      "login": "Mua"
-    },
-    {
-      "transactionId": "GNY9BcTRk",
-      "userId": "ofw2S6WI_",
-      "bookId": "1mWuehzHk",
-      "logout": "Mua"
-    },
-    {
-      "transactionId": "rh7tHOmtc",
-      "userId": "ofw2S6WI_",
-      "bookId": "1mWuehzHk",
-      "logout": "Mua"
-    },
-    {
-      "transactionId": "scQzfUhHj",
-      "userId": "ofw2S6WI_",
-      "bookId": "1mWuehzHk",
-      "logout": "Mua"
-    },
-    {
-      "transactionId": "128H-weuI",
+      "transactionId": "YGYDOjm9H",
       "userId": "ofw2S6WI_",
       "bookId": "1mWuehzHk"
     },
     {
-      "transactionId": "8Qiso7bm_",
-      "userId": "ofw2S6WI_",
-      "bookId": "1mWuehzHk"
-    },
-    {
-      "transactionId": "ahy9LDVgz",
-      "userId": "ofw2S6WI_",
-      "bookId": "1mWuehzHk"
-    },
-    {
-      "transactionId": "KyesqRnff",
-      "userId": "ofw2S6WI_",
-      "bookId": "1mWuehzHk",
-      "logout": "Mua"
-    },
-    {
-      "transactionId": "caCwe3PVx",
-      "userId": "ofw2S6WI_",
-      "bookId": "1mWuehzHk",
       "logout": "Mua"
     }
   ]
