@@ -6,25 +6,25 @@ block content
 
   form(action="/transaction/view")
 
-    button View
+    button(type="submit", class="btn btn-primary") View
 
   h1 Login User
 
   form(action="/users/login", method="GET")
 
-    button Login
+    button(type="submit", class="btn btn-primary") Login
 
   h1 Book List
 
   form(action="/route/create")
 
-    button Add Title
+    button(type="submit", class="btn btn-primary") Add Title
 
   form(action="/route/search", method="GET")
 
     input(type="text", name= "q")
 
-    button Search
+    button(type="submit", class="btn btn-primary") Search
 
   ul
     each book in books
@@ -37,9 +37,9 @@ block content
           span= book.description
         //TẠO KHOẢN CÁCH
         span &nbsp; 
-        a(href='/route/update/' + book.bookId) Update
+        a(class="btn btn-outline-primary", href='/route/update/' + book.bookId) Update
         span &nbsp; 
-        a(href='/route/delete/' + book.bookId) Delete
+        a(class="btn btn-outline-primary", href='/route/delete/' + book.bookId) Delete
 
 
       

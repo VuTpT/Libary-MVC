@@ -6,7 +6,7 @@ block content
 
   form(action="/users/create")
 
-    button Add User
+    button(type="submit", class="btn btn-primary") Add User
 
   form(action="/route")
 
@@ -16,7 +16,7 @@ block content
 
     input(type="text", name= "q")
 
-    button Search
+    button(type="submit", class="btn btn-primary") Search
 
   ul
     each user in users

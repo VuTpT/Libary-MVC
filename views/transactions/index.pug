@@ -6,36 +6,36 @@ block content
 
     form(action="/route")
 
-      button Back
+      button(type="submit", class="btn btn-primary") Back
 
     form(action="/transaction/search", method="GET")
 
       input(type="text", name= "q")
 
-      button Search ID     
+      button(type="submit", class="btn btn-primary") Search ID     
 
     form(action="/transaction/create", method="POST")
       label Users:
       span &nbsp
       select(name='user')
         each user in users
-          option(value= user.userId) #{user.name}
+          option(value= user.userId, class="dropdown-item") #{user.name}
       span &nbsp  
 
       label Books:
       span &nbsp
       select(name='book')
         each book in books
-          option(value= book.bookId) #{book.title}  
+          option(value= book.bookId, class="dropdown-item") #{book.title}  
         span &nbsp
-      button(type="submit") Add
+      button(type="submit", class="btn btn-primary") Add
 
-    table(style='width:100%')
+    table(style='width:100%', class="table table-bordered")
       tr
-        th ID
-        th User
-        th Book
-        th Logout
+        th(scope="col") ID
+        th(scope="col") User
+        th(scope="col") Book
+        th(scope="col") Logout
       each transaction in transactions
         tr
           td= transaction.transactionId       
@@ -43,7 +43,7 @@ block content
           td= transaction.bookId
           td
             if transaction.isComplete
-              a(href="#") True
+              a(class="btn btn-primary", href="#") True
             else
-              a(href="/transaction/"+  transaction.transactionId + "/complete" ) False
+              a(class="btn btn-primary", href="/transaction/"+  transaction.transactionId + "/complete" ) False
 
