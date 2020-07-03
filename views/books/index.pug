@@ -4,29 +4,29 @@ block content
 
   h1(class="text-center") Transactions Libary
 
-  form(action="/transaction/view",  class="d-flex")
+  form(action="/transaction/view",  class="d-flex justify-content-center")
 
     button(type="submit", class="btn btn-primary") View
 
   h1(class="text-center") Login User
 
-  form(action="/users/login", method="GET", class="d-flex")
+  form(action="/users/login", method="GET", class="d-flex justify-content-center")
 
     button(type="submit", class="btn btn-primary") Login
 
   h1(class="text-center") Book List
 
-  form(action="/route/create", class="d-flex")
+  form(action="/route/create", class="d-flex justify-content-center")
 
     button(type="submit", class="btn btn-primary") Add Title
 
-  form(action="/route/search", method="GET", class="d-flex")
+  form(action="/route/search", method="GET", class="d-flex justify-content-center")
 
     input(type="text", name= "q", class="form-control")
 
     button(type="submit", class="btn btn-primary ml-2") Search 
 
-  ul
+  ul()
     each book in books
       li
         p Title:
