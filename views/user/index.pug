@@ -4,17 +4,17 @@ block content
 
   h1 Users List
 
-  form(action="/users/create")
+  form(action="/users/create", class="d-flex")
 
     button(type="submit", class="btn btn-primary") Add User
 
-  form(action="/route")
+  form(action="/route", class="d-flex")
 
     button(type="submit", class="btn btn-primary") Back
 
-  form(action="/users/search", method="GET")
+  form(action="/users/search", method="GET", class="d-flex")
 
-    input(type="text", name= "q")
+    input(type="text", name= "q", class="form-control")
 
     button(type="submit", class="btn btn-primary ml-2") Search
 
