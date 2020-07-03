@@ -36,10 +36,12 @@ block content
           span &nbsp
           span= book.description
         //TẠO KHOẢN CÁCH
-        span &nbsp; 
-        a(class="btn btn-outline-primary", href='/route/update/' + book.bookId) Update
-        span &nbsp; 
-        a(class="btn btn-outline-primary", href='/route/delete/' + book.bookId) Delete
+        span &nbsp;
+        ul(class="nav justify-content-center")
+          li(class="nav-item") 
+            a(class="btn btn-outline-primary mr-2", href='/route/update/' + book.bookId, value="Submit") Update
+          li(class="nav-item") 
+            a(class="btn btn-outline-primary ml-2", href='/route/delete/' + book.bookId) Delete
 
 
       
