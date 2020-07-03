@@ -1,27 +1,28 @@
-h1 Users List
+ 
+  h1 Users List
 
-form(action="/users/create")
+  form(action="/users/create")
 
-  button Add User
-  
-form(action="/route")
+    button Add User
 
-  button Back
+  form(action="/route")
 
-form(action="/users/search", method="GET")
+    button Back
 
-  input(type="text", name= "q")
-    
-  button Search
-  
-ul
-  each user in users
-    li
-      p Name:
-        span &nbsp
-        span= user.name
-        //TẠO KHOẢN CÁCH
-      span &nbsp; 
-      a(href='/users/update/' + user.userId) Update
-      span &nbsp; 
-      a(href='/users/delete/' + user.userId) Delete
+  form(action="/users/search", method="GET")
+
+    input(type="text", name= "q")
+
+    button Search
+
+  ul
+    each user in users
+      li
+        p Name:
+          span &nbsp
+          span= user.name
+          //TẠO KHOẢN CÁCH
+        span &nbsp; 
+        a(href='/users/update/' + user.userId) Update
+        span &nbsp; 
+        a(href='/users/delete/' + user.userId) Delete

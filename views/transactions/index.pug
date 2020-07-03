@@ -1,51 +1,51 @@
-style.
-  table, tr, th, td {
-    border: 1px solid black;
-    }
-body
-  h1 Transactions Libary
 
-  form(action="/route")
+  style.
+    table, tr, th, td {
+      border: 1px solid black;
+      }
+  body
+    h1 Transactions Libary
 
-    button Back
+    form(action="/route")
 
-  form(action="/transaction/search", method="GET")
+      button Back
 
-    input(type="text", name= "q")
+    form(action="/transaction/search", method="GET")
 
-    button Search ID     
+      input(type="text", name= "q")
 
-  form(action="/transaction/create", method="POST")
-    label Users:
-    span &nbsp
-    select(name='user')
-      each user in users
-        option(value= user.userId) #{user.name}
-    span &nbsp  
+      button Search ID     
 
-    label Books:
-    span &nbsp
-    select(name='book')
-      each book in books
-        option(value= book.bookId) #{book.title}  
+    form(action="/transaction/create", method="POST")
+      label Users:
       span &nbsp
-    button(type="submit") Add
+      select(name='user')
+        each user in users
+          option(value= user.userId) #{user.name}
+      span &nbsp  
 
-  table(style='width:100%')
-    tr
-      th ID
-      th User
-      th Book
-      th Logout
-    each transaction in transactions
+      label Books:
+      span &nbsp
+      select(name='book')
+        each book in books
+          option(value= book.bookId) #{book.title}  
+        span &nbsp
+      button(type="submit") Add
+
+    table(style='width:100%')
       tr
-        td= transaction.transactionId       
-        td= transaction.userId 
-        td= transaction.bookId
-        td
-          if transaction.isComplete
-            a(href="#") True
-          else
-            a(href="/transaction/"+  transaction.transactionId + "/complete" ) False
-          
-    
+        th ID
+        th User
+        th Book
+        th Logout
+      each transaction in transactions
+        tr
+          td= transaction.transactionId       
+          td= transaction.userId 
+          td= transaction.bookId
+          td
+            if transaction.isComplete
+              a(href="#") True
+            else
+              a(href="/transaction/"+  transaction.transactionId + "/complete" ) False
+

@@ -1,41 +1,44 @@
-h1 Transactions Libary
+extends ../layouts/common.pug
 
-form(action="/transaction/view")
+block content
+  h1 Transactions Libary
 
-  button View
+  form(action="/transaction/view")
 
-h1 Login User
+    button View
 
-form(action="/users/login", method="GET")
+  h1 Login User
 
-  button Login
+  form(action="/users/login", method="GET")
 
-h1 Book List
+    button Login
 
-form(action="/route/create")
+  h1 Book List
 
-  button Add Title
+  form(action="/route/create")
 
-form(action="/route/search", method="GET")
+    button Add Title
 
-  input(type="text", name= "q")
-    
-  button Search
+  form(action="/route/search", method="GET")
 
-ul
-  each book in books
-    li
-      p Title:
-        span &nbsp
-        span= book.title
-      p Description:
-        span &nbsp
-        span= book.description
-      //TẠO KHOẢN CÁCH
-      span &nbsp; 
-      a(href='/route/update/' + book.bookId) Update
-      span &nbsp; 
-      a(href='/route/delete/' + book.bookId) Delete
+    input(type="text", name= "q")
+
+    button Search
+
+  ul
+    each book in books
+      li
+        p Title:
+          span &nbsp
+          span= book.title
+        p Description:
+          span &nbsp
+          span= book.description
+        //TẠO KHOẢN CÁCH
+        span &nbsp; 
+        a(href='/route/update/' + book.bookId) Update
+        span &nbsp; 
+        a(href='/route/delete/' + book.bookId) Delete
 
 
       

@@ -1,21 +1,22 @@
-style.
-  table, tr, th, td {
-    border: 1px solid black;
-    }
-body
-  h1 Search
 
-    table(style='width:100%')
-      tr
-        th ID
-        th User
-        th Book
-      each transaction in transactions
+  style.
+    table, tr, th, td {
+      border: 1px solid black;
+      }
+  body
+    h1 Search
+
+      table(style='width:100%')
         tr
-          td= transaction.transactionId
-          td= transaction.userId
-          td= transaction.bookId
-    
-    form(action="/transaction/view")
+          th ID
+          th User
+          th Book
+        each transaction in transactions
+          tr
+            td= transaction.transactionId
+            td= transaction.userId
+            td= transaction.bookId
 
-      button Back
+      form(action="/transaction/view")
+
+        button Back
