@@ -4,17 +4,14 @@ block content
 
   h1(class="text-center") Create Book
 
-  form(action="/route/create", method="POST", class="d-flex")
+  form(action="/route/create", method="POST")
 
-    label Title: 
+    p(class="d-flex justify-content-center") Title: 
 
-    p 
-      input(type="text", name= "title", class="d-flex")
+    input(type="text", name= "title", class="form-control")
 
-    label Description: 
+    p(class="d-flex justify-content-center") Description: 
 
-    p
-      input(type="text", name= "description", class="form-control")
-
-    p 
-      button(type="submit", class="btn btn-outline-primary ml-2") Create
+    input(type="text", name= "description", class="form-control")
+ 
+    button(type="submit", class="btn btn-outline-primary mt-2") Create
