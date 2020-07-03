@@ -10,13 +10,13 @@ block content
 
   form(action="/route")
 
-    button Back
+    button(type="submit", class="btn btn-primary") Back
 
   form(action="/users/search", method="GET")
 
     input(type="text", name= "q")
 
-    button(type="submit", class="btn btn-primary") Search
+    button(type="submit", class="btn btn-primary ml-2") Search
 
   ul
     each user in users
@@ -26,6 +26,6 @@ block content
           span= user.name
           //TẠO KHOẢN CÁCH
         span &nbsp; 
-        a(href='/users/update/' + user.userId) Update
+        a(class="btn btn-outline-primary", href='/users/update/' + user.userId) Update
         span &nbsp; 
-        a(href='/users/delete/' + user.userId) Delete
+        a(class="btn btn-outline-primary", href='/users/delete/' + user.userId) Delete

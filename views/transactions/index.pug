@@ -12,7 +12,7 @@ block content
 
       input(type="text", name= "q")
 
-      button(type="submit", class="btn btn-primary") Search ID     
+      button(type="submit", class="btn btn-primary ml-2") Search ID     
 
     form(action="/transaction/create", method="POST")
       label Users:
@@ -28,7 +28,7 @@ block content
         each book in books
           option(value= book.bookId, class="dropdown-item") #{book.title}  
         span &nbsp
-      button(type="submit", class="btn btn-primary") Add
+      button(type="submit", class="btn btn-primary ml-2") Add
 
     table(style='width:100%', class="table table-bordered")
       tr
