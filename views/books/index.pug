@@ -26,13 +26,13 @@ block content
 
     button(type="submit", class="btn btn-primary ml-2") Search 
 
-  ul()
+  ul(class="list-group")
     each book in books
-      li
-        p Title:
+      li(class="list-group-item")
+        p(class="d-flex justify-content-center") Title:
           span &nbsp
           span= book.title
-        p Description:
+        p(class="d-flex justify-content-center") Description:
           span &nbsp
           span= book.description
         //TẠO KHOẢN CÁCH
