@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/route', bookRouter);
 app.use('/users', userRouter);
 app.use('/transaction', transactionRouter);
-
+app.use('/static', express.static('public'));
 
 // listen for requests :)
 app.listen(process.env.PORT, () => {
