@@ -23,8 +23,19 @@ module.exports.view = function(request, response) {
       .value()
       .title;
     data[index]['isComplete'] = value.isComplete;
+    var errors = [];
+    if (!value.isComplete) {
+      errors.push('Transactions id exit.');
+    }
+    if (errors.length){
+      response.render('/transaction/view', {
+        errors : errors
+      });
+      return;
+    }
   });
   console.log(data);
+  
   
   response.render('transactions/index', {
     transactions : data,
@@ -60,16 +71,6 @@ module.exports.postCreate = function(request, response) {
 };
 
 module.exports.isComplete = function(request, response) {
-  var errors = [];
-  if (!request.params.transactionId) {
-    errors.push('Transactions id exit.');
-  }
-  if (errors.length){
-    response.render('/transaction/view', {
-      errors : errors
-    });
-    return;
-  }
   db.get('transactions')
     .find({ transactionId : request.params.transactionId })
     .assign({ isComplete : true })
