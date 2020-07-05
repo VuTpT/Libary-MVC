@@ -4,6 +4,7 @@ var bookRouter = require("./routes/book.route");
 var userRouter = require("./routes/user.route");
 var transactionRouter = require("./routes/transaction.route");
 var path = require('path');
+var favicon = require('serve-favicon');
 
 
 app.set("view engine", "pug");
