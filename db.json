@@ -48,7 +48,8 @@
     {
       "transactionId": "veUTh9odX",
       "userId": "EhizP6RPo",
-      "bookId": "1mWuehzHk"
+      "bookId": "1mWuehzHk",
+      "isComplete": true
     }
   ]
 }
