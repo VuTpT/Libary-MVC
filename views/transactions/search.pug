@@ -2,19 +2,23 @@ extends ../../layouts/common
 
 block content
 
-    h1(class="text-center") Search
+ h1(class="text-center") Search
     
-      table(style='width:100%', class="table table-bordered")
-        tr
-          th ID
-          th User
-          th Book
-        each transaction in transactions
-          tr
-            td= transaction.transactionId
-            td= transaction.userId
-            td= transaction.bookId
+  if errors 
+    each error in errors
+      .alert.alert-danger= error
+    
+  table(style='width:100%', class="table table-bordered")
+    tr
+      th ID
+      th User
+      th Book
+    each transaction in transactions
+      tr
+        td= transaction.transactionId
+        td= transaction.userId
+        td= transaction.bookId
+  
+  form(action="/transaction/view")
 
-      form(action="/transaction/view")
-
-        button(type="submit", class="btn btn-outline-primary") Back
+    button(type="submit", class="btn btn-outline-primary") Back
