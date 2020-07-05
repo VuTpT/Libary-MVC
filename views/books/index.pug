@@ -13,32 +13,11 @@ block content
             | Home 
             span.sr-only (current)
         li.nav-item
-          a.nav-link(href='#') Transactions
+          a.nav-link(href='/transaction/view') Transactions
         li.nav-item
-          a.nav-link(href='#') Book List
+          a.nav-link(href='/route/create') Book List
         li.nav-item
-          a.nav-link(href='#') Login
-        li.nav-item
-          a.nav-link.disabled(href='#', tabindex='-1', aria-disabled='true') Disabled
-
-
-  h1(class="text-center") Transactions Libary
-
-  form(action="/transaction/view",  class="d-flex justify-content-center")
-
-    button(type="submit", class="btn btn-outline-primary") View
-
-  h1(class="text-center") Login User
-
-  form(action="/users/login", method="GET", class="d-flex justify-content-center")
-
-    button(type="submit", class="btn btn-outline-primary") Login
-
-  h1(class="text-center") Book List
-
-  form(action="/route/create", class="d-flex justify-content-center")
-
-    button(type="submit", class="btn btn-outline-primary") Add Title
+          a.nav-link(href='/users/login') Login User
 
   form(action="/route/search", method="GET", class="d-flex justify-content-center")
 
@@ -46,7 +25,10 @@ block content
 
     button(type="submit", class="btn btn-outline-primary ml-2") Search 
 
-  ul(class="list-group")
+  table.table
+    tr
+      th Title
+      th Description
     each book in books
       li(class="list-group-item")
         p(class="d-flex justify-content-center") Title:
