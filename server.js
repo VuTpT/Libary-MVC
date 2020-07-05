@@ -3,6 +3,7 @@ const app = express();
 var bookRouter = require("./routes/book.route");
 var userRouter = require("./routes/user.route");
 var transactionRouter = require("./routes/transaction.route");
+var path = require('path');
 
 
 app.set("view engine", "pug");
@@ -15,7 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/route', bookRouter);
 app.use('/users', userRouter);
 app.use('/transaction', transactionRouter);
+
 app.use('/static', express.static('public'));
+app.use(express.static("public"));
+app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
 // listen for requests :)
 app.listen(process.env.PORT, () => {
