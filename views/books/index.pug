@@ -19,11 +19,12 @@ block content
         li.nav-item
           a.nav-link(href='/users/login') Login User
 
-        form(action="/route/search", method="GET", class="form-inline my-2 my-lg-0")
+      form.ml-auto(action="/route/search", method="GET", class="form-inline my-2 my-lg-0")
 
-          input(type="text", name= "q", class="form-control mr-sm-2", placeholder="Search", aria-label="Search")
+        input(type="text", name= "q", class="form-control mr-sm-2", placeholder="Search", aria-label="Search")
 
-          button(type="submit", class="btn btn-outline-primary my-2 my-sm-0") Search 
+        button(type="submit", class="btn btn-outline-primary my-2 my-sm-0") Search 
+          
 
   table(style='width:100%', class="table table-bordered")
     tr
@@ -38,6 +39,8 @@ block content
         td
           a(class="btn btn-outline-primary", href='/route/update/' + book.bookId, value="Submit") Update
           a(class="btn btn-outline-primary ml-2", href='/route/delete/' + book.bookId) Delete
+          
+      
 
 
       
