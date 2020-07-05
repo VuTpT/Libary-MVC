@@ -4,26 +4,4 @@ html
     link(rel='shortcut icon', href='/favicon')
   body
     block content
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      a.navbar-brand(href='#') Libary
-      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
-        span.navbar-toggler-icon
-      #navbarNav.collapse.navbar-collapse
-        ul.navbar-nav
-          li.nav-item.active
-            a.nav-link(href='/route')
-              | Home 
-              span.sr-only (current)
-          li.nav-item
-            a.nav-link(href='/transaction/view') Transactions
-          li.nav-item
-            a.nav-link(href='/route/create') Create Book 
-          li.nav-item
-            a.nav-link(href='/users/login') Login User
-
-        form.ml-auto(action="/route/search", method="GET", class="form-inline my-2 my-lg-0")
-
-          input(type="text", name= "q", class="form-control mr-sm-2", placeholder="Search", aria-label="Search")
-
-          button(type="submit", class="btn btn-outline-primary my-2 my-sm-0") Search
-  block nav
+    block nav
