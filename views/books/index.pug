@@ -1,7 +1,26 @@
 extends ../../layouts/common
 
 block content
-  img(src='/favicon.png')
+
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    a.navbar-brand(href='#') Libary
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      ul.navbar-nav
+        li.nav-item.active
+          a.nav-link(href='/route')
+            | Home 
+            span.sr-only (current)
+        li.nav-item
+          a.nav-link(href='#') Transactions
+        li.nav-item
+          a.nav-link(href='#') Book List
+        li.nav-item
+          a.nav-link(href='#') Login
+        li.nav-item
+          a.nav-link.disabled(href='#', tabindex='-1', aria-disabled='true') Disabled
+
 
   h1(class="text-center") Transactions Libary
 
