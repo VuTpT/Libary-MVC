@@ -53,6 +53,13 @@ module.exports.postUpdate = function(request, response) {
 };
 
 module.exports.postCreate = function(request, response) {
+  var errors = [];
+  if (!request.body.title) {
+    errors.push('Title is require.')
+  }
+  if (!request.body.description) {
+    errors.push('Description is require.')
+  }
   db.get('books')
     .push({ bookId : shortid.generate(),title: request.body.title, description : request.body.description })
     .value()
