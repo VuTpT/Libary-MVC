@@ -68,7 +68,7 @@ module.exports.postCreate = function(request, response) {
   }
   db.get('books')
     .push({ bookId : shortid.generate(),title: request.body.title, description : request.body.description })
-    .write()
+    .value()
     .id;
   response.redirect('/route');
 };
