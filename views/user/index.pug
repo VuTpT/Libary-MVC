@@ -20,15 +20,12 @@ block content
 
   table(style='width:100%', class="table table-bordered")
     each user in users
-       tr
-          th Title
-        p(class="d-flex justify-content-center") Name:
-          span &nbsp
-          span= user.name
+      tr
+        th Name
+        th Actions
+      tr
+        td= user.name
           //TẠO KHOẢN CÁCH
-        span &nbsp;
-        ul(class="nav justify-content-center")
-          li(class="nav-item") 
-            a(class="btn btn-outline-primary", href='/users/update/' + user.userId) Update
-          li(class="nav-item") 
-            a(class="btn btn-outline-primary ml-2", href='/users/delete/' + user.userId) Delete
+        td
+          a(class="btn btn-outline-primary", href='/users/update/' + user.userId) Update
+          a(class="btn btn-outline-primary ml-2", href='/users/delete/' + user.userId) Delete

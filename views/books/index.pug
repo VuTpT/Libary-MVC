@@ -19,18 +19,17 @@ block content
         li.nav-item
           a.nav-link(href='/users/login') Login User
 
-  form(action="/route/search", method="GET", class="d-flex justify-content-center")
+        form(action="/route/search", method="GET", class="form-inline my-2 my-lg-0")
 
-    input(type="text", name= "q", class="form-control")
+          input(type="text", name= "q", class="form-control mr-sm-2", placeholder="Search", aria-label="Search")
 
-    button(type="submit", class="btn btn-outline-primary ml-2") Search 
+          button(type="submit", class="btn btn-outline-primary my-2 my-sm-0") Search 
 
   table(style='width:100%', class="table table-bordered")
     tr
       th Title
       th Description
-      th Edit Title
-      th Delete
+      th Actions
     each book in books
       tr
         td= book.title
@@ -38,7 +37,6 @@ block content
         //TẠO KHOẢN CÁCH
         td
           a(class="btn btn-outline-primary", href='/route/update/' + book.bookId, value="Submit") Update
-        td
           a(class="btn btn-outline-primary ml-2", href='/route/delete/' + book.bookId) Delete
 
 
