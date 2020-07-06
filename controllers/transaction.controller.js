@@ -1,7 +1,7 @@
 var db = require('../db');
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
-var logout = ['Mua'];
+const Joi = require('joi');
 
 module.exports.view = function(request, response) {
   var users = db.get('users').value();
@@ -23,16 +23,6 @@ module.exports.view = function(request, response) {
       .value()
       .title;
     data[index]['isComplete'] = value.isComplete;
-    var errors = [];
-    if (!value.isComplete) {
-      errors.push('Transactions id exit.');
-    }
-    if (errors.length){
-      response.render('/transaction/view', {
-        errors : errors
-      });
-      return;
-    }
   });
   console.log(data);
   
@@ -71,6 +61,11 @@ module.exports.postCreate = function(request, response) {
 };
 
 module.exports.isComplete = function(request, response) {
+  const schema= Joi.object().keys({
+    email : Joi.string().trim().email().required(),
+    password: Joi.string().min(5).max(10).required()
+  });
+  Joi.validate(request.body)
   db.get('transactions')
     .find({ transactionId : request.params.transactionId })
     .assign({ isComplete : true })
