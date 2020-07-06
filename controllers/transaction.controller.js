@@ -61,11 +61,7 @@ module.exports.postCreate = function(request, response) {
 };
 
 module.exports.isComplete = function(request, response) {
-  const schema= Joi.object().keys({
-    email : Joi.string().trim().email().required(),
-    password: Joi.string().min(5).max(10).required()
-  });
-  Joi.validate(request.body)
+  
   db.get('transactions')
     .find({ transactionId : request.params.transactionId })
     .assign({ isComplete : true })
@@ -73,5 +69,20 @@ module.exports.isComplete = function(request, response) {
   
   response.redirect('/transaction/view');
 };
+
+module.exports.getisComplete = function(request, response) {
+  console.log(request.body);
+  const schema= Joi.object().keys({
+    isComplete : Joi.string().trim().isComplete().required()
+  });
+  Joi.validate(request.body,schema,(err, result)=>{
+    if(err){
+      console.log(err)
+      response.send('an error has occurred');
+    }
+    console.log(result)
+    response.send('successfully posted data');
+  })
+}
 
 
