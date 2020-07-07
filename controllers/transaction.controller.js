@@ -73,7 +73,7 @@ module.exports.isComplete = function(request, response) {
 module.exports.getisComplete = function(request, response) {
   console.log(request.body);
   const schema= Joi.object().keys({
-    isComplete : Joi.string().trim(.isComplete().required()
+    transactionId : Joi.string().transactionId().required()
   });
   Joi.validate(request.body,schema,(err, result)=>{
     if(err){
