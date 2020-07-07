@@ -65,7 +65,7 @@ module.exports.isComplete = function(request, response) {
   db.get('transactions')
     .find({ transactionId : request.params.transactionId })
     .assign({ isComplete : true })
-    .write()
+    .value()
   
   console.log(request.body);
   
@@ -81,12 +81,12 @@ module.exports.isComplete = function(request, response) {
       
       console.log(err);
       
-      response.send('an error has occurred');
+      response.end('an error has occurred');
     }
     
     console.log(result);
     
-    response.send('successfully posted data');
+    response.end('successfully posted data');
   });
   
   response.redirect('/transaction/view');
