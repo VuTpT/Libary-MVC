@@ -67,22 +67,29 @@ module.exports.isComplete = function(request, response) {
     .assign({ isComplete : true })
     .write()
   
-  response.redirect('/transaction/view');
-};
-
-module.exports.getisComplete = function(request, response) {
   console.log(request.body);
-  const schema= Joi.object().keys({
-    transactionId : Joi.string().transactionId().required()
-  });
+  
+  const schema= Joi.object({ 
+    isComplete : Joi.string()
+        .alphanum()
+        .min(3)
+        .max(30)
+        .required()
+      })
   Joi.validate(request.body,schema,(err, result)=>{
     if(err){
-      console.log(err)
+      
+      console.log(err);
+      
       response.send('an error has occurred');
     }
-    console.log(result)
+    
+    console.log(result);
+    
     response.send('successfully posted data');
-  })
-}
+  });
+  
+  response.redirect('/transaction/view');
+};
 
 
