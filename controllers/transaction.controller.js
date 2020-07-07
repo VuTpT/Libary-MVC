@@ -61,12 +61,17 @@ module.exports.postCreate = function(request, response) {
 };
 
 module.exports.isComplete = function(request, response) {
+  // việc rất nhanh là bạn đang xài request.params.transactionId và bạn chỉ cần kiểm tra xem
+  // nó có hợp lệ hay không ?
+  // không thì res.send không hợp lệ
+  // có thì isComplete = true
   
   db.get('transactions')
     .find({ transactionId : request.params.transactionId })
     .assign({ isComplete : true })
     .value()
-  
+};
+module.exports.postComplete = function(request, response) {
   console.log(request.body);
   // trước tiên thì bạn xem là bạn đang dùng GET, đồng nghĩ với việc là không có req.body
   // thì lấy đâu ra req.body mà chỉ có query hoặc params lấy trên url
