@@ -72,12 +72,14 @@
     {
       "transactionId": "iZP4cY27l",
       "userId": "iP7vv069b",
-      "bookId": "6I3AloBim"
+      "bookId": "6I3AloBim",
+      "isComplete": true
     },
     {
       "transactionId": "YEwB8Hifl",
       "userId": "ofw2S6WI_",
-      "bookId": "XxDiPItrB"
+      "bookId": "XxDiPItrB",
+      "isComplete": true
     }
   ]
 }
