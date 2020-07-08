@@ -52,6 +52,7 @@ module.exports.search = function (request, response) {
 // METHOD POST
 
 module.exports.postCreate = function(request, response) {
+  
   db.get('transactions')
     .push({ transactionId : shortid.generate(), userId : request.body.user, bookId: request.body.book })
     .write()
