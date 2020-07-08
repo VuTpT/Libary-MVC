@@ -62,14 +62,11 @@ module.exports.postCreate = function(request, response) {
 };
 
 module.exports.isComplete = function(request, response) {
-  // việc rất nhanh là bạn đang xài request.params.transactionId và bạn chỉ cần kiểm tra xem
-  // nó có hợp lệ hay không ?
-  // không thì res.send không hợp lệ
-  // có thì isComplete = true
   var errors = [];
-  if(!request.params.transactionId){
-    errors.push('TransactionId không hợp lệ') ;
-  }
+  
+  // if(!request.params.transactionId){
+  //   errors.push('TransactionId không hợp lệ') ;
+  // }
   
   var transaction = db
     .get('transactions')
@@ -81,7 +78,7 @@ module.exports.isComplete = function(request, response) {
   }
   
   if(errors.length) {
-    return response.render('transaction/view', {
+    return response.render('transactions/complete', {
       errors : errors
     });
   }
@@ -92,13 +89,12 @@ module.exports.isComplete = function(request, response) {
     .write()
   return response.redirect('/transaction/view');
 };
-module.exports.postComplete = function(request, response) {
+
   // trước tiên thì bạn xem là bạn đang dùng GET, đồng nghĩ với việc là không có req.body
-}
   // thì lấy đâu ra req.body mà chỉ có query hoặc params lấy trên url
   // khi tạo ra 1 Joi.object({}) cái bạn viết trong này tức làm cái yêu cầu
   // nó sẽ ở dạng objec {key : value} đơn giản thôi
-  
+
   // giả sử như bạn muốn so sánh id thì khi bạn req.params thì  nó như này {id : "ajhdsflkahdf"} kiểu vậy
   // công đoạn validate ở đây thực chất là kiểm tra 2 object có giống nhau không chứ không có gì ghê gớm lắm đâu
   // đấy mình nói xong rồi

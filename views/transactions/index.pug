@@ -3,12 +3,10 @@ extends ../../layouts/common
 block content
      
     h1(class="text-center") Transactions Libary
-    // mình viết lại chỗ này cho bạn 
+    
     if errors
       each error in errors 
         .alert.alert-danger(role='alert')= error
-    // mình viết lại chỗ này cho bạn 
-      
 
     form(action="/route", class="d-flex")
 

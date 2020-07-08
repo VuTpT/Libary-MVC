@@ -4,3 +4,7 @@ block content
     if errors
       each error in errors 
         .alert.alert-danger(role='alert')= error
+        
+    form(action="/transaction/view", class="d-flex")
+
+      button(type="submit", class="btn btn-outline-primary") Back
