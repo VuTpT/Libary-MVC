@@ -71,17 +71,19 @@ module.exports.isComplete = function(request, response) {
     errors.push('TransactionId không hợp lệ') ;
   }
   
-  var transaction = db.get('transactions')
+  var transaction = db
+    .get('transactions')
     .find({ transactionId : request.params.transactionId })
-  
+    .value();
+  // return response.json(transaction);
   if(!transaction) {
     errors.push('Không tìm thấy transaction');
   }
+  
   if(errors.length) {
-    response.render('transactions/complete', {
+    return response.render('transaction/view', {
       errors : errors
     });
-    return;
   }
   
   db.get('transactions')
