@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var userController = require("../controllers/user.controller");
+var validate = require("../validate/user.validate");
 
 //Display screen users
 router.get('/login', userController.login);
@@ -23,6 +24,6 @@ router.get('/delete/:userId', userController.delete);
 router.post('/update/:userId', userController.postUpdate);
 
 //Create user  
-router.post('/create', userController.postCreate);
+router.post('/create', validate.postCreate, userController.postCreate);
 
 module.exports = router;

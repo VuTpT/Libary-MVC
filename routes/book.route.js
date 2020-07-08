@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bookController = require("../controllers/book.controller");
+var validate = require("../validate/book.validate");
 
 //Display screen books
 router.get('/', bookController.show);
@@ -23,6 +24,6 @@ router.get('/delete/:bookId', bookController.delete);
 router.post('/update/:bookId', bookController.postUpdate);
 
 //Create books  
-router.post('/create', bookController.postCreate)
+router.post('/create', validate.postCreate, bookController.postCreate)
 
 module.exports = router;
