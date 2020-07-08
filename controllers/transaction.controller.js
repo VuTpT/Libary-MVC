@@ -73,7 +73,7 @@ module.exports.isComplete = function(request, response) {
 
   }
   if(errors.length) {
-    response.render('/transaction/search', {
+    response.render('/transactions/complete', {
       errors : errors
     });
     return;
@@ -83,10 +83,12 @@ module.exports.isComplete = function(request, response) {
     .find({ transactionId : request.params.transactionId })
     .assign({ isComplete : true })
     .write()
+  
+  return response.render('/transaction/view');
 };
 module.exports.postComplete = function(request, response) {
   // trước tiên thì bạn xem là bạn đang dùng GET, đồng nghĩ với việc là không có req.body
-  }
+}
   // thì lấy đâu ra req.body mà chỉ có query hoặc params lấy trên url
   // khi tạo ra 1 Joi.object({}) cái bạn viết trong này tức làm cái yêu cầu
   // nó sẽ ở dạng objec {key : value} đơn giản thôi

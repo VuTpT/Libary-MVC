@@ -13,7 +13,7 @@ router.get('/search', transactionController.search);
 //Create transactions  
 router.post('/create', transactionController.postCreate)
 
-router.post('/:transactionId/complete', transactionController.isComplete);
+router.get('/:transactionId/complete', transactionController.isComplete);
 
 
 module.exports = router;
