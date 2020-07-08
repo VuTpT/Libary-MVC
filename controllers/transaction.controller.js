@@ -70,7 +70,6 @@ module.exports.isComplete = function(request, response) {
     .find({ transactionId : request.params.transactionId })
     .assign({ isComplete : true })
     .value()
-  response.redirect('/transaction/view');
 };
 module.exports.postComplete = function(request, response) {
   var errors = [];
@@ -81,8 +80,14 @@ module.exports.postComplete = function(request, response) {
     errors.push('an error has occurred') ;
 
   }
+  if(errors.length) {
+    response.render('/transaction/view', {
+      errors : errors
+    });
+    return;
+  }
 
-  
+} 
   // khi tạo ra 1 Joi.object({}) cái bạn viết trong này tức làm cái yêu cầu
   // nó sẽ ở dạng objec {key : value} đơn giản thôi
   
