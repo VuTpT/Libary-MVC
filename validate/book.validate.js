@@ -13,7 +13,7 @@ module.exports.postCreate = function (request, response, next) {
     return;
   }
   
-  response
+  response.locals.success = true;
   
   next();
 }

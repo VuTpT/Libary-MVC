@@ -54,6 +54,8 @@ module.exports.postUpdate = function(request, response) {
 
 module.exports.postCreate = function(request, response) {
   
+  console.log(response.success);
+  
   db.get('books')
     .push({ bookId : shortid.generate(),title: request.body.title, description : request.body.description })
     .value()
