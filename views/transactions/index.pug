@@ -1,9 +1,7 @@
 extends ../../layouts/common
 
 block content
-      if errors 
-        each error in errors
-          .alert.alert-danger= error;
+     
     h1(class="text-center") Transactions Libary
 
     form(action="/route", class="d-flex")
@@ -48,5 +46,6 @@ block content
               a(class="btn btn-outline-primary", href="#") True
             else
               a(class="btn btn-outline-primary", href="/transaction/"+  transaction.transactionId + "/complete" ) False
+              
              
 

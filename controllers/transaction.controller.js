@@ -69,21 +69,21 @@ module.exports.isComplete = function(request, response) {
   var errors = [];
   if(!request.params.transactionId){
       
-    response.send('An error has occurred') ;
+    errors.push('An error has occurred') ;
 
   }
   if(errors.length) {
     
-    response.render('/transaction/search', {
+    response.render('/transaction/complete', {
       errors : errors
     });
     return;
   }
   
-  db.get('transactions')
-  .find({ transactionId : request.params.transactionId })
-  .assign({ isComplete : true })
-  .write()
+    db.get('transactions')
+    .find({ transactionId : request.params.transactionId })
+    .assign({ isComplete : true })
+    .write()
   
   response.redirect('/transaction/view');
 };
