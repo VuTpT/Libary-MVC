@@ -67,25 +67,22 @@ module.exports.isComplete = function(request, response) {
   // không thì res.send không hợp lệ
   // có thì isComplete = true
   var errors = [];
-  if(!request.params.transactionId){
+  if(!request.body.transactionId){
       
     errors.push('An error has occurred') ;
 
   }
   if(errors.length) {
-    
-    response.render('/transaction/complete', {
+    response.render('/transaction/search', {
       errors : errors
     });
     return;
   }
   
-    db.get('transactions')
+  db.get('transactions')
     .find({ transactionId : request.params.transactionId })
     .assign({ isComplete : true })
     .write()
-  
-  response.redirect('/transaction/view');
 };
 module.exports.postComplete = function(request, response) {
   // trước tiên thì bạn xem là bạn đang dùng GET, đồng nghĩ với việc là không có req.body
