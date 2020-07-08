@@ -74,16 +74,17 @@ module.exports.isComplete = function(request, response) {
   }
   if(errors.length) {
     
-    db.get('transactions')
-    .find({ transactionId : request.params.transactionId })
-    .assign({ isComplete : true })
-    .write()
-    
     response.render('/transaction/search', {
       errors : errors
     });
     return;
   }
+  
+  db.get('transactions')
+  .find({ transactionId : request.params.transactionId })
+  .assign({ isComplete : true })
+  .write()
+  
   response.redirect('/transaction/view');
 };
 module.exports.postComplete = function(request, response) {
