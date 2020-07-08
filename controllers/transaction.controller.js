@@ -66,29 +66,32 @@ module.exports.isComplete = function(request, response) {
   // nó có hợp lệ hay không ?
   // không thì res.send không hợp lệ
   // có thì isComplete = true
-  
-  db.get('transactions')
-    .find({ transactionId : request.params.transactionId })
-    .assign({ isComplete : true })
-    .value()
-};
-module.exports.postComplete = function(request, response) {
   var errors = [];
-  // trước tiên thì bạn xem là bạn đang dùng GET, đồng nghĩ với việc là không có req.body
-  // thì lấy đâu ra req.body mà chỉ có query hoặc params lấy trên url
-  if(!request.body.transactionId){
+  if(!request.params.transactionId){
       
     errors.push('an error has occurred') ;
 
   }
   if(errors.length) {
-    response.render('/transaction/view', {
+    response.render('/transaction/search', {
       errors : errors
     });
     return;
   }
+  
+  db.get('transactions')
+    .find({ transactionId : request.params.transactionId })
+    .assign({ isComplete : true })
+    .write()
+};
+module.exports.postComplete = function(request, response) {
+  // trước tiên thì bạn xem là bạn đang dùng GET, đồng  if(!request.body.transactionId){
+      
+    
 
-} 
+  }
+//nghĩ với việc là không có req.body
+  // thì lấy đâu ra req.body mà chỉ có query hoặc params lấy trên url
   // khi tạo ra 1 Joi.object({}) cái bạn viết trong này tức làm cái yêu cầu
   // nó sẽ ở dạng objec {key : value} đơn giản thôi
   
