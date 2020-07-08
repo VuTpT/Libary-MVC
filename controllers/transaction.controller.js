@@ -68,12 +68,17 @@ module.exports.isComplete = function(request, response) {
   // có thì isComplete = true
   var errors = [];
   if(!request.params.transactionId){
-      
-    errors.push('An error has occurred') ;
-
+    errors.push('TransactionId không hợp lệ') ;
+  }
+  
+  var transaction = db.get('transactions')
+    .find({ transactionId : request.params.transactionId })
+  
+  if(!transaction) {
+    errors.push('Không tìm thấy transaction');
   }
   if(errors.length) {
-    response.render('/transactions/complete', {
+    response.render('transactions/complete', {
       errors : errors
     });
     return;
