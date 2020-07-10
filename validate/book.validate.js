@@ -18,11 +18,11 @@ module.exports.postCreate = function (request, response, next) {
   next();
 }
 
-module.exports.cookie = function (request, response, next) {
+module.exports.cookies = function (request, response, next) {
   if (request.cookies.count) {
-    console.log({ count: request.cookies.count + 1 });
+    console.log({ count: parseFloat(request.cookies.count) + 1 });
     
-    response.cookie('count', request.cookies.count + 1);
+    response.cookie('count', parseFloat(request.cookies.count) + 1);
   } else {
     console.log({ count: 1 });
     response.cookie('count', 1);
