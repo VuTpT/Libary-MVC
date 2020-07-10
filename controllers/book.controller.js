@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const shortid = require('shortid');
 
 module.exports.show = function(request, response) {
-  console.log(request.cookies);
   response.render('books/index', {
     books : db.get('books').value()
   });

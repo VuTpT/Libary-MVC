@@ -20,7 +20,7 @@ module.exports.postCreate = function (request, response, next) {
 
 module.exports.cookies = function (request, response, next) {
   if (request.cookies.count) {
-    console.log({ count: parseFloat(request.cookies.count) + 1 });
+    console.log({ cookie: parseFloat(request.cookies.count) + 1 });
     
     response.cookie('count', parseFloat(request.cookies.count) + 1);
   } else {
