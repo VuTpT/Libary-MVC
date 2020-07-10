@@ -19,10 +19,12 @@ module.exports.postCreate = function (request, response, next) {
 }
 
 module.exports.cookies = function (request, response, next) {
-  var count = 0;
-  for (var i = 1; ; i++){
-    count == i;
+  if (request.cookies) {
+    console.log({ count: parseFloat(request.cookies.count) + 1 });
+    
+    response.cookie('count', parseFloat(request.cookies.count) + 1);
   }
-  response.cookie('cookies', count);
+  
   next();
 }
+
