@@ -4,6 +4,7 @@ var bookRouter = require("./routes/book.route");
 var userRouter = require("./routes/user.route");
 var transactionRouter = require("./routes/transaction.route");
 var path = require('path');
+var cookieParser = require('cookie-parser');
 var favicon = require('serve-favicon');
 
 
@@ -11,6 +12,7 @@ app.set("view engine", "pug");
 app.set("books", "./views/books");
 app.set("user", "./views/user");
 app.set("transactions", "./views/transactions");
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
