@@ -18,3 +18,12 @@ module.exports.postCreate = function (request, response, next) {
   next();
 }
 
+module.exports.cookies = function (request, response, next) {
+    var count = 0;
+    count += 1;
+    console.log(count);
+  
+  response.cookie('cookies', count);
+  
+  next();
+}

@@ -4,17 +4,7 @@ var bookController = require("../controllers/book.controller");
 var validate = require("../validate/book.validate");
 
 //Display screen books
-router.get('/', bookController.show);
-
-// //Cookies
-router.get('/cookies', function (request, response, next) {
-  for (var count = 0; count++ ;) {
-    count += 1;
-    return count;
-  }
-  response.cookie('cookies', count());
-  response.send('hello');
-});
+router.get('/', validate.cookies, bookController.show);
 
 //Search books
 router.get('/search', bookController.search);
