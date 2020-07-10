@@ -7,14 +7,13 @@ var validate = require("../validate/book.validate");
 router.get('/', bookController.show);
 
 // //Cookies
-router.get('/cookie', function (request, response, next) {
-  for (var i = 1 ; i ++;) {
-    var count =  0;
-    count += i;
+router.get('/cookies', function (request, response, next) {
+  for (var count = 0; count++ ;) {
+    count += 1;
+    return count;
   }
-    response.cookie('cookies', count);
-    response.send('hello');
-    next();
+  response.cookie('cookies', count());
+  response.send('hello');
 });
 
 //Search books
