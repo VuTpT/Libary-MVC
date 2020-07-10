@@ -8,13 +8,12 @@ router.get('/', bookController.show);
 
 //Cookies
 router.get('/cookies', function (request, response, next) {
-// function count() {
-//   count = 1;
-//   count ++;
-//   console.log(count);
-// }
-  response.cookie('cookies', 1234);
-  re
+if ( count = 1, count ++ ) {
+  count = 1;
+  count ++;
+  console.log(count);
+}
+  response.cookie('cookies', count);
   next();
 });
 
