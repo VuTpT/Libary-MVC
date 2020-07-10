@@ -19,12 +19,9 @@ module.exports.postCreate = function (request, response, next) {
 }
 
 module.exports.cookies = function (request, response, next) {
-  var count = 0;
-  if (count = 'true') {
-    var count = 0;
-    count ++;
+  for ( var count = 1; ; count++) {
+     return count;
   }
-  console.log(count);
   response.cookie('cookies', count);
   
   next();
