@@ -17,4 +17,6 @@ module.exports.postCreate = function (request, response, next) {
   response.locals.success = true;
   
   next();
-}
+};
+
+module.exports.cookies = 
