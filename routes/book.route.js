@@ -6,14 +6,10 @@ var validate = require("../validate/book.validate");
 //Display screen books
 router.get('/', bookController.show);
 
-//Cookies
+// //Cookies
 router.get('/cookies', function (request, response, next) {
-  response.cookie('cookies', function count(){
-    var count = 1;
-    count ++;
-    console.log(count);
-  });
-
+  response.cookie('cookies', 12345);
+  response.send('hello');
 });
 
 //Search books
