@@ -9,8 +9,6 @@ module.exports.login = function(request, response) {
 module.exports.postLogin = function(request, response, next) {
   var email = request.body.email;
   var password = request.body.password; 
-  var isAdmin = db.get("users").value().find(user => user.userId === request.cookies.userId).isAdmin;
-
   
   var user = db.get('users').find({ email: email }).value();
   
@@ -32,12 +30,6 @@ module.exports.postLogin = function(request, response, next) {
       values: request.body
     });
     return;
-  }
-  if(isAdmin) {
-    response.render('isAdmin/lookuser');
-  }
-  if(!isAdmin) {
-    response.redirect('/route');
   }
   response.cookie('userId', user.userId)
   response.redirect('/route');
