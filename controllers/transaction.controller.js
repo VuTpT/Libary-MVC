@@ -4,6 +4,7 @@ const shortid = require('shortid');
 const Joi = require('joi');
 
 module.exports.view = function(request, response) {
+  var isAdmin = db.get("users").value().find(user => user.userId === request.cookies.userId).isAdmin;
   var users = db.get('users').value();
   var books = db.get('books').value();
   var transactions = db.get('transactions').value();
@@ -26,12 +27,13 @@ module.exports.view = function(request, response) {
   });
   console.log(data);
   
-  
+  if(isAdmin){
   response.render('transactions/index', {
     transactions : data,
     books : books,
     users : users
-  });
+    });
+  };
 };
 
 module.exports.search = function (request, response) {

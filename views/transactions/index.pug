@@ -18,21 +18,22 @@ block content
 
       button(type="Submit", class="btn btn-outline-primary ml-2") Search ID     
 
-    form(action="/transaction/create", method="POST", class="d-flex")
-      label Users:
-      span &nbsp
-      select(name='user')
-        each user in users
-          option(value= user.userId, class="dropdown-item") #{user.name}
-      span &nbsp  
-
-      label Books:
-      span &nbsp
-      select(name='book')
-        each book in books
-          option(value= book.bookId, class="dropdown-item") #{book.title}  
+    if isAdmin
+      form(action="/transaction/create", method="POST", class="d-flex")
+        label Users:
         span &nbsp
-      button(type="submit", class="btn btn-outline-primary ml-2") Add
+        select(name='user')
+          each user in users
+            option(value= user.userId, class="dropdown-item") #{user.name}
+        span &nbsp  
+
+        label Books:
+        span &nbsp
+        select(name='book')
+          each book in books
+            option(value= book.bookId, class="dropdown-item") #{book.title}  
+          span &nbsp
+        button(type="submit", class="btn btn-outline-primary ml-2") Add
       
     table(style='width:100%', class="table table-bordered")
       tr
