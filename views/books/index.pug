@@ -25,20 +25,6 @@ block nav
 
         button(type="submit", class="btn btn-outline-primary my-2 my-sm-0") Search 
   
-  
-  if isAdmin
-    form.ml-auto(action="/transaction/view", class="form-inline my-2 my-lg-0")
-        button(type="submit", class="btn btn-outline-primary my-2 my-sm-0")  transaction
-  if isAdmin
-    form(action='books/create' , method='POST')
-      .form-group
-        label(for='title') Title Book
-        input#title.form-control(type='text', name='title')
-      .form-group
-        label(for='description')  Description Book
-        input#description.form-control(type='text', name='description')
-      button.btn.btn-primary Create
-  
   h1(class="text-center") Book List
   
   table(style='width:100%', class="table table-bordered")

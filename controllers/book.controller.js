@@ -2,7 +2,7 @@ var db = require('../db');
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
 
-module.exports.isadmin = function(request, response, next) {
+module.exports.showuser = function(request, response, next) {
   var isAdmin = db.get("users").value().find(user => user.userId === request.cookies.userId).isAdmin;
   if(isAdmin){
     response.render('isAdmin/lookuser');
@@ -10,11 +10,10 @@ module.exports.isadmin = function(request, response, next) {
   next();
 };
 
-module.exports.show = function(request, response, next) {
+module.exports.show = function(request, response) {
   response.render('books/index', {
     books : db.get('books').value()
     });
-  next();
 };
 
 module.exports.search = function (request, response) {
