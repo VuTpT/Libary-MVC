@@ -3,9 +3,13 @@ const bodyParser = require('body-parser');
 const shortid = require('shortid');
 
 module.exports.show = function(request, response) {
+  var isAdmin = db.get("users").value().find(user => user.userId === request.cookies.userId).isAdmin;
+  if (isAdmin) {
   response.render('books/index', {
     books : db.get('books').value()
-  });
+  
+    });
+  }
 };
 
 module.exports.search = function (request, response) {
