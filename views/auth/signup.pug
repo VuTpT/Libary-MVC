@@ -2,20 +2,23 @@ extends ../../layouts/common
 
 block content
 
-  h1(class="text-center") Create Book
-  
   if errors 
     each error in errors
-      .alert.alert-danger= error
+      .alert.alert-danger(role='alert')= error
 
-  form(action="/route/create", method="POST")
+  h1(class="text-center") Create User
 
-    label(for="title") Title: 
+  form(action="/users/create", method="POST", class="d-flex")
+    
+    label(for="name") User Name: 
 
-    input#title(type="text", name= "title", class="form-control")
+    p 
+      input#name(type="text", name= "name", class="form-control")
 
-    label(for="description") Description: 
-
-    input#description(type="text", name= "description", class="form-control")
- 
-    button(type="submit", class="btn btn-outline-primary mt-2") Create
+    label(for="password") Password: 
+    
+    p 
+      input#password(type="text", name= "password", class="form-control")
+      
+    p 
+      button(type="submit", class="btn btn-outline-primary ml-2") Create

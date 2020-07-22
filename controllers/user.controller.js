@@ -57,7 +57,7 @@ module.exports.postCreate = function(request, response) {
   console.log(response.success);
   
   db.get('users')
-    .push({ userId : shortid.generate(), name: request.body.name })
+    .push({ userId : shortid.generate(), name: request.body.name, password: request.body.password  })
     .value()
     .id;
   response.redirect('/users/login');
