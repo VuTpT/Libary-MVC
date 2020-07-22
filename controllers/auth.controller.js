@@ -1,3 +1,6 @@
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 var md5 = require('md5');
 var db = require('../db');
 const bodyParser = require('body-parser');
@@ -22,6 +25,18 @@ module.exports.postLogin = function(request, response, next) {
     });
     return;
   }
+  
+  bcrypt.hash(password, saltRounds, function(err, hash) {
+      if(user.password !== hashedPassword) {
+        response.render('auth/login', {
+          errors : [
+            'Wrong password'
+          ],
+          values: request.body
+        });
+      return;
+    }
+  });
   
   var hashedPassword = md5(password);
   
