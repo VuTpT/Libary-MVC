@@ -19,5 +19,8 @@ block content
 
     input#password(type="password", name= "password", class="form-control", value=values ? values.password : "")
 
-    button.btn.btn-outline-primary  Login
+    button(type="submit", class="btn btn-outline-primary mt-4") Login 
+    
+  form(action="auth/signup", method="POST")
+    button(type="submit", class="btn btn-outline-primary mt-4 ml-4") Sign Up 
     
