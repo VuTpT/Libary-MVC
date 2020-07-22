@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 
-
 var md5 = require('md5');
 var db = require('../db');
 const bodyParser = require('body-parser');
