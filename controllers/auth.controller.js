@@ -27,8 +27,10 @@ module.exports.postLogin = function(request, response, next) {
     return;
   }
   
-  const hash = bcrypt.hashSync(password, saltRounds);
-  var hashedPassword = md5(password);
+  bcrypt.hash(password, saltRounds).then(function(hash) {
+    // Store hash in your password DB.
+  
+  // var hashedPassword = md5(password);
   
   if(user.password !== hash) {
     response.render('auth/login', {
@@ -38,7 +40,8 @@ module.exports.postLogin = function(request, response, next) {
       values: request.body
     });
     return;
-  }
+      }  
+  });
   response.cookie('userId', user.userId)
   response.redirect('/route');
   next();
