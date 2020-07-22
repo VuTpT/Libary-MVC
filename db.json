@@ -25,27 +25,6 @@
       "isAdmin": true
     },
     {
-      "userId": "wDn2LtiY3",
-      "name": "Khai",
-      "email": "khaiqua@gmail.com",
-      "password": "123123",
-      "isAdmin": false
-    },
-    {
-      "userId": "EhizP6RPo",
-      "name": "Luong",
-      "email": "luongleo@gmail.com",
-      "password": "123123",
-      "isAdmin": false
-    },
-    {
-      "userId": "iP7vv069b",
-      "name": "Hai",
-      "email": "haicui@gmail.com",
-      "password": "123123",
-      "isAdmin": false
-    },
-    {
       "userId": "g7NhCCFgw",
       "name": "Thanh",
       "email": "thanhmai@gmail.com",

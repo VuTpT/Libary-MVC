@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 
 var md5 = require('md5');
@@ -18,7 +17,7 @@ module.exports.signup = function(request, response) {
 module.exports.postLogin = function(request, response, next) {
   var email = request.body.email;
   var password = request.body.password; 
-  
+
   
   var user = db.get('users').find({ email: email }).value();
   
