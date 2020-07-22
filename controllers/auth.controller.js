@@ -1,3 +1,4 @@
+var md5 = require('md5');
 var db = require('../db');
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
@@ -22,7 +23,9 @@ module.exports.postLogin = function(request, response, next) {
     return;
   }
   
-  if(user.password !== password) {
+  var hashedPassword = md5(password);
+  
+  if(user.password !== hashedPassword) {
     response.render('auth/login', {
       errors : [
         'Wrong password'

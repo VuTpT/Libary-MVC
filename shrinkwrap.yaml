@@ -4,6 +4,7 @@ dependencies:
   express: 4.17.1
   joi: 14.3.1
   lowdb: 1.0.0
+  md5: 2.2.1
   pug: 3.0.0
   save: 2.4.0
   serve-favicon: 2.5.0
@@ -228,6 +229,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-x84o821LzZdE5f/CxfzeHHMmH8A=
+  /charenc/0.0.2:
+    dev: false
+    resolution:
+      integrity: sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=
   /chokidar/3.4.0:
     dependencies:
       anymatch: 3.1.1
@@ -329,6 +334,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-+Hp8fLp57wnUSt0tY0tHEXh4voZRDnoIrZPqlo3DPiI4y9lwg/jqx+1Om94/W6ZaPDOUbnjOt/99w66zk+l1Xg==
+  /crypt/0.0.2:
+    dev: false
+    resolution:
+      integrity: sha1-iNf/fsDfuG9xPch7u0LQRNPmxBs=
   /crypto-random-string/2.0.0:
     dev: true
     engines:
@@ -690,6 +699,10 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==
+  /is-buffer/1.1.6:
+    dev: false
+    resolution:
+      integrity: sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
   /is-ci/2.0.0:
     dependencies:
       ci-info: 2.0.0
@@ -873,6 +886,14 @@ packages:
     dev: false
     resolution:
       integrity: sha1-ih8HiW2CsQkmvTdEokIACfiJdKg=
+  /md5/2.2.1:
+    dependencies:
+      charenc: 0.0.2
+      crypt: 0.0.2
+      is-buffer: 1.1.6
+    dev: false
+    resolution:
+      integrity: sha1-U6s41f48iJG6RlMp6iP6wFQBJvk=
   /media-typer/0.3.0:
     dev: false
     engines:
@@ -1631,6 +1652,7 @@ specifiers:
   express: ^4.17.1
   joi: ^14.3.1
   lowdb: ^1.0.0
+  md5: ^2.2.1
   nodemon: ^2.0.4
   pug: ^3.0.0
   save: ^2.4.0
