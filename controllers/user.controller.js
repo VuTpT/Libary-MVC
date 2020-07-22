@@ -57,10 +57,10 @@ module.exports.postCreate = function(request, response) {
   console.log(response.success);
   
   db.get('users')
-    .push({ userId : shortid.generate(), name: request.body.name, password: request.body.password  })
+    .push({ userId : shortid.generate(), name: request.body.email, password: request.body.password, isAdmin: false })
     .value()
     .id;
-  response.redirect('/users/login');
+  response.redirect('/auth/login');
 };
 
 

@@ -19,6 +19,7 @@ module.exports.postLogin = function(request, response, next) {
   var email = request.body.email;
   var password = request.body.password; 
   
+  
   var user = db.get('users').find({ email: email }).value();
   
   if(!user) {

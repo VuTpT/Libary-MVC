@@ -9,16 +9,16 @@ block content
   h1(class="text-center") Create User
 
   form(action="/users/create", method="POST", class="d-flex")
-    
-    label(for="name") User Name: 
+  
+    .form-group   
+      label(for="Email") Email: 
 
-    p 
-      input#name(type="text", name= "name", class="form-control")
+      input#email(type="email", name= "email", class="form-control")
 
-    label(for="password") Password: 
-    
-    p 
-      input#password(type="text", name= "password", class="form-control")
+    .form-group 
+      label(for="Email") Password: 
+
+      input#password(type="password", name= "password", class="form-control")
       
     p 
       button(type="submit", class="btn btn-outline-primary ml-2") Create
