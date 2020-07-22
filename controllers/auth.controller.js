@@ -27,8 +27,8 @@ module.exports.postLogin = function(request, response, next) {
     return;
   }
   
-  bcrypt.hash(password, saltRounds).then(function(hash) {
-    // Store hash in your password DB.
+  bcrypt.compare(password, user.password).then(function(hash) {
+    // result == true
   
   // var hashedPassword = md5(password);
   
