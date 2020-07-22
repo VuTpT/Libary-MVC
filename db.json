@@ -21,35 +21,35 @@
       "userId": "ofw2S6WI_",
       "name": "Trần Phước Trường Vũ ",
       "email": "vutptit@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
+      "password": "123123",
       "isAdmin": true
     },
     {
       "userId": "wDn2LtiY3",
       "name": "Khai",
       "email": "khaiqua@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
+      "password": "123123",
       "isAdmin": false
     },
     {
       "userId": "EhizP6RPo",
       "name": "Luong",
       "email": "luongleo@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
+      "password": "123123",
       "isAdmin": false
     },
     {
       "userId": "iP7vv069b",
       "name": "Hai",
       "email": "haicui@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
+      "password": "123123",
       "isAdmin": false
     },
     {
       "userId": "g7NhCCFgw",
       "name": "Thanh",
       "email": "thanhmai@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
+      "password": "123123",
       "isAdmin": false
     }
   ],
