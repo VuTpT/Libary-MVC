@@ -11,6 +11,10 @@ module.exports.login = function(request, response) {
   response.render('auth/login')
 }
 
+module.exports.signup = function(request, response) {
+  response.render('auth/signup')
+}
+
 module.exports.postLogin = function(request, response, next) {
   var email = request.body.email;
   var password = request.body.password; 
