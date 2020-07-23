@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 
+
 var db = require('../db');
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
@@ -56,16 +57,19 @@ module.exports.postUpdate = function(request, response) {
 
 module.exports.postCreate = function(request, response, next) {
   const saltRounds = 3;
+  const salt = bcrypt.genSalt(10);
+  const hashPass = bcrypt.hash(request.body.password, salt)
   
   console.log(response.success);
   
   bcrypt.hash(request.body.password, saltRounds).then(function(hash) {
     
     db.get('users')
-    .push({ userId : shortid.generate(), email: request.body.name, password: hash, isAdmin: false })
+    .push({ userId : shortid.generate(), email: request.body.email, password: hash, isAdmin: false })
     .value()
     .id;
-  
+    
+  next();
     
   response.redirect('/auth/login');
 });
