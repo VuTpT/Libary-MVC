@@ -60,5 +60,7 @@ module.exports.postSignUp = function(request, response, next) {
     .value()
     .id;
   });
-  response.render('books/index');
+  response.render('books/index', {
+    books : db.get('books').value()
+  });
 }
