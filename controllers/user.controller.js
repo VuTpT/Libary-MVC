@@ -56,9 +56,8 @@ module.exports.postUpdate = function(request, response) {
 };
 
 module.exports.postCreate = function(request, response, next) {
-  const saltRounds = 3;
-  const salt = bcrypt.genSalt(10);
-  const hashPass = bcrypt.hash(request.body.password, salt)
+  const saltRounds = bcrypt.genSalt(10);
+
   
   console.log(response.success);
   
@@ -71,7 +70,7 @@ module.exports.postCreate = function(request, response, next) {
     
   next();
     
-  response.redirect('/auth/login');
+  response.render('user/index');
 });
 
 };
