@@ -23,6 +23,18 @@
       "email": "vutptit@gmail.com",
       "password": "123123",
       "isAdmin": true
+    },
+    {
+      "userId": "j9LKYsOCz",
+      "email": "thanhmai@gmail.com",
+      "password": {},
+      "isAdmin": false
+    },
+    {
+      "userId": "Z_ZtZ9wfw",
+      "email": "thanhmai@gmail.com",
+      "password": {},
+      "isAdmin": false
     }
   ],
   "transactions": [

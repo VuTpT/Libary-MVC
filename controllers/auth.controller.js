@@ -34,8 +34,14 @@ module.exports.postLogin = function(request, response, next) {
     // result == true
   
   // var hashedPassword = md5(password);
+  if(user.password > 4) {
+    response.send();
+  }  
+    
+    
   if(user.email == request.body.email && res){
-    request.se
+    request.session.email = request.body.email;
+    console.log('Password Matches!')
   } 
   else {
     response.render('auth/login', {
@@ -61,6 +67,7 @@ module.exports.postSignUp = function(request, response, next) {
     .push({ userId : shortid.generate(), email: request.body.email, password: hash, isAdmin: false })
     .write();
   });
+  
   response.render('books/index', {
     books : db.get('books').value()
   });
