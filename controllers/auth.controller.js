@@ -9,9 +9,6 @@ module.exports.login = function(request, response) {
   response.render('auth/login')
 }
 
-module.exports.signup = function(request, response) {
-  response.render('auth/signup')
-}
 
 module.exports.postLogin = function(request, response, next) {
   var email = request.body.email;
@@ -55,21 +52,5 @@ module.exports.postLogin = function(request, response, next) {
   next();
 };
 
-module.exports.postSignUp = async function(request, response) {
-     const salt = await bcrypt.genSalt(10);
-     const hashPass = await bcrypt.hash(request.body.password, salt)
-     
-   let newUser = {
-    id: shortid.generate(),
-    password : hashPass,
-    email: request.body.email,
-    name: request.body.name,
-    isAdmin: false
-  }
-   
-   db.get("users").push(newUser).write();
-   
-  response.redirect('/users')
-  
-  }
+
 
