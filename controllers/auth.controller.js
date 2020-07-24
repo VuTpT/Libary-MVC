@@ -30,20 +30,13 @@ module.exports.postLogin = function(request, response, next) {
     return;
   }
   
-  bcrypt.compare(password, user.password).then(function(res) {
-    // result == true
-  
-  // var hashedPassword = md5(password);
-  if(user.password > 4) {
-    response.send();
-  }  
-    
-    
-  if(user.email == request.body.email && res){
-    request.session.email = request.body.email;
-    console.log('Password Matches!')
-  } 
-  else {
+  bcrypt.compare(request.body.password, hash, function(err, res) {
+  // if res == true, password matched
+     if(user.email == request.body.email) {
+       console.log('Password Matches!');
+     }
+  // else wrong password
+    else {
     response.render('auth/login', {
       errors : [
         'Wrong password'
@@ -51,8 +44,11 @@ module.exports.postLogin = function(request, response, next) {
       values: request.body
     });
     return;
-      }  
-  });
+      } 
+});
+  
+  // var hashedPassword = md5(password);
+  
   response.cookie('userId', user.userId)
   response.redirect('/route');
   next();
@@ -61,12 +57,11 @@ module.exports.postLogin = function(request, response, next) {
 module.exports.postSignUp = function(request, response, next) {
   const saltRounds = bcrypt.genSalt(10);
   
-  bcrypt.hash(request.body.password, saltRounds, function(hash) {
-    
+  bcrypt.hash(request.body.password, saltRounds, (err, hash) => {
     db.get('users')
     .push({ userId : shortid.generate(), email: request.body.email, password: hash, isAdmin: false })
     .write();
-  });
+});
   
   response.render('books/index', {
     books : db.get('books').value()
