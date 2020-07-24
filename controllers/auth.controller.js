@@ -68,7 +68,7 @@ module.exports.postSignUp = async function(request, response) {
   }
    
    db.get("users").push(newUser).write();
-  
+   
   response.redirect('/users')
   
   }

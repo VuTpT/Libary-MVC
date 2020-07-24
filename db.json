@@ -57,6 +57,20 @@
       "email": "123@gmail.com",
       "name": "long",
       "isAdmin": false
+    },
+    {
+      "id": "WHWgNa3Tz",
+      "password": "$2b$10$nhN/62zPsS599IO4OQx9vOjhHwzTp3yCazBrfh00HDdpM23zJQQKu",
+      "email": "123@gmail.com",
+      "name": "long",
+      "isAdmin": false
+    },
+    {
+      "id": "0w6z8tDcL",
+      "password": "$2b$10$WRxiz7JG4mYnV.CTNizswe8hh3o66Bng3ZXavAJk1AVHRlobxHSc.",
+      "email": "123@gmail.com",
+      "name": "long",
+      "isAdmin": false
     }
   ],
   "transactions": [
