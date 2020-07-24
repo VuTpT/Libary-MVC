@@ -30,12 +30,14 @@ module.exports.postLogin = function(request, response, next) {
     return;
   }
   
-  bcrypt.compare(password, user.password).then(function(hash) {
+  bcrypt.compare(password, user.password).then(function(res) {
     // result == true
   
   // var hashedPassword = md5(password);
-  
-  if(user.password !== hash) {
+  if(user.email == request.body.email && res){
+    request.se
+  } 
+  else {
     response.render('auth/login', {
       errors : [
         'Wrong password'
@@ -54,10 +56,10 @@ module.exports.postSignUp = function(request, response, next) {
   const saltRounds = bcrypt.genSalt(10);
   
   bcrypt.hash(request.body.password, saltRounds, function(hash) {
+    
     db.get('users')
     .push({ userId : shortid.generate(), email: request.body.email, password: hash, isAdmin: false })
-    .value()
-    .id;
+    .write();
   });
   response.render('books/index', {
     books : db.get('books').value()
