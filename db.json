@@ -35,6 +35,21 @@
       "email": "thanhmai@gmail.com",
       "password": {},
       "isAdmin": false
+    },
+    {
+      "userId": "c3lF_do96",
+      "email": "vutpt@gmail.com",
+      "isAdmin": false
+    },
+    {
+      "userId": "EQgtimgQu",
+      "email": "vutpt@gmail.com",
+      "isAdmin": false
+    },
+    {
+      "userId": "WAoSqDhBc",
+      "email": "vutpt@gmail.com",
+      "isAdmin": false
     }
   ],
   "transactions": [
