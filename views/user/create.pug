@@ -8,7 +8,7 @@ block content
 
   h1(class="text-center") Create User
 
-  form(action='users/create' , method='POST')
+  form(action='/users/create' , method='POST')
       .form-group
         label(for='name')  Name
         input#name.form-control(type='text', name='name' value=values ? values.name : "")

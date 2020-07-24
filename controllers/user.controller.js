@@ -4,11 +4,7 @@ const shortid = require('shortid');
 const bcrypt = require('bcrypt');
 
 
-module.exports.login = function(request, response) {
-  response.render('user/index', {
-    users : db.get('users').value()
-  });
-};
+
 
 module.exports.search = function (request, response) {
   var q = request.query.q

@@ -3,8 +3,7 @@ var router = express.Router();
 var userController = require("../controllers/user.controller");
 var validate = require("../validate/user.validate");
 
-//Display screen users
-router.get('/login', userController.login);
+
 
 //Search users
 router.get('/search', userController.search);
