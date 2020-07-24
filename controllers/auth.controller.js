@@ -52,9 +52,8 @@ module.exports.postLogin = function(request, response, next) {
 
 module.exports.postSignUp = function(request, response, next) {
   const saltRounds = bcrypt.genSalt(10);
-
   
-  bcrypt.hash(request.body.password, saltRounds, function(err, hash) {
+  bcrypt.hash(request.body.password, saltRounds, function(hash) {
     db.get('users')
     .push({ userId : shortid.generate(), email: request.body.email, password: hash, isAdmin: false })
     .value()

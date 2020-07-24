@@ -23,13 +23,6 @@
       "email": "vutptit@gmail.com",
       "password": "123123",
       "isAdmin": true
-    },
-    {
-      "userId": "g7NhCCFgw",
-      "name": "Thanh",
-      "email": "thanhmai@gmail.com",
-      "password": "123123",
-      "isAdmin": false
     }
   ],
   "transactions": [
