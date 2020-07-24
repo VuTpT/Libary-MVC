@@ -50,6 +50,13 @@
       "userId": "WAoSqDhBc",
       "email": "vutpt@gmail.com",
       "isAdmin": false
+    },
+    {
+      "id": "Qo4nIopZp",
+      "password": "$2b$10$S04JiFSFA8fcF4Ebztapcu4pPeGNKm4RsKnWLt/z9piGiT1.7qaDC",
+      "email": "123@gmail.com",
+      "name": "long",
+      "isAdmin": false
     }
   ],
   "transactions": [

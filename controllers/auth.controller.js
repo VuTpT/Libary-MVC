@@ -58,12 +58,18 @@ module.exports.postLogin = function(request, response, next) {
 module.exports.postSignUp = async function(request, response) {
      const salt = await bcrypt.genSalt(10);
      const hashPass = await bcrypt.hash(request.body.password, salt)
-
-     db.get('users')
-    .push({ userId : shortid.generate(), email: request.body.email, password: hashPass, isAdmin: false })
-    .write();
+     
+   let newUser = {
+    id: shortid.generate(),
+    password : hashPass,
+    email: request.body.email,
+    name: request.body.name,
+    isAdmin: false
+  }
+   
+   db.get("users").push(newUser).write();
   
-    response.redirect('/user')
+  response.redirect('/users')
   
   }
 
