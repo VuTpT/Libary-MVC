@@ -55,25 +55,15 @@ module.exports.postLogin = function(request, response, next) {
   next();
 };
 
-module.exports.postSignUp = function(request, response) {
-  const saltRounds = bcrypt.genSalt(10);
-  var email = db.get('users').map('email').value();
-  var user = db.get('users').find({ email: email }).value();
-  var usernameIsTaken = email.includes(request.email)
-  
-  
-  if(usernameIsTaken){
-    return response.render(request.signupTemplate, {errors: ['This username is already taken']})
-  }
-  else {
-  bcrypt.hash(request.body.password, saltRounds).then(function(hash) {
-    var newuser = db.get('users')
-    .push({ userId : shortid.generate(), email: request.body.email, password: hash, isAdmin: false })
+module.exports.postSignUp = async function(request, response) {
+     const salt = await bcrypt.genSalt(10);
+     const hashPass = await bcrypt.hash(request.body.password, salt)
+
+     db.get('users')
+    .push({ userId : shortid.generate(), email: request.body.email, password: hashPass, isAdmin: false })
     .write();
-    });
+  
+    response.redirect('/user')
+  
   }
 
-  response.render('books/index', {
-    books : db.get('books').value()
-  });
-}
