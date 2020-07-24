@@ -30,7 +30,7 @@ module.exports.postLogin = function(request, response, next) {
     return;
   }
   
-  bcrypt.compare(request.body.password, hash, function(err, res) {
+  bcrypt.compare(request.body.password, user.password, function(err, res) {
   // if res == true, password matched
      if(user.email == request.body.email) {
        console.log('Password Matches!');
@@ -54,14 +54,25 @@ module.exports.postLogin = function(request, response, next) {
   next();
 };
 
-module.exports.postSignUp = function(request, response, next) {
+module.exports.postSignUp = function(options, response) {
   const saltRounds = bcrypt.genSalt(10);
+  var email = db.get('users').map('email').value();
+  var usernameIsTaken = email.includes(options.email)
   
-  bcrypt.hash(request.body.password, saltRounds, (err, hash) => {
+//   bcrypt.hash(request.body.password, saltRounds, (err, hash) => {
+//     db.get('users')
+//     .push({ userId : shortid.generate(), email: request.body.email, password: hash, isAdmin: false })
+//     .write();
+// });
+  
+  if(usernameIsTaken){
+    return response.render(options.signupTemplate, {errors: ['This username is already taken']})
+  }
+  else {
     db.get('users')
-    .push({ userId : shortid.generate(), email: request.body.email, password: hash, isAdmin: false })
+    .push({ email: request.body.email, password: hashPassword(options.password), isAdmin: false })
     .write();
-});
+  }
   
   response.render('books/index', {
     books : db.get('books').value()
