@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/route', authMiddleware.requireAuth, bookRouter);
-app.use('/users', authMiddleware.requireAuth,userRouter);
+app.use('/users', userRouter);
 app.use('/transaction', transactionRouter);
 app.use('/auth', authRouter);
 
