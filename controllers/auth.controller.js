@@ -30,6 +30,11 @@ module.exports.postLogin = async function(request, response, next) {
   
   // if res == true, password matched
   if(user.password !== passLogin) {
+    response.render('books/index');
+    return;
+   }
+  // else wrong password
+    else {
     response.render('auth/login', {
       errors : [
         'Wrong password'
@@ -37,17 +42,7 @@ module.exports.postLogin = async function(request, response, next) {
       values: request.body
     });
     return;
-   }
-  // else wrong password
-    // else {
-    // response.render('auth/login', {
-    //   errors : [
-    //     'Wrong password'
-    //   ],
-    //   values: request.body
-    // });
-    // return;
-    //   } 
+      } 
   
   // var hashedPassword = md5(password);
   
