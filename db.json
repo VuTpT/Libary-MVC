@@ -30,6 +30,13 @@
       "email": "123@gmail.com",
       "name": "long",
       "isAdmin": false
+    },
+    {
+      "id": "w2X9LdXh6",
+      "password": "$2b$10$tTlwJzTz/hGPRC33C4YQIOFg.MtzUsh0qa/0mYTcdr4erd/r5.aUK",
+      "email": "vutpt111@gmail.com",
+      "name": "Trần Phước Trường Vũ ",
+      "isAdmin": false
     }
   ],
   "transactions": [

@@ -29,9 +29,8 @@ module.exports.postLogin = async function(request, response, next) {
   const passLogin = await bcrypt.compare(password, user.password);
   
   // if res == true, password matched
-  if(user.password !== passLogin) {
-    response.render('books/index');
-    return;
+  if(user.password == passLogin) {
+    response.render('books/index')
    }
   // else wrong password
     else {
