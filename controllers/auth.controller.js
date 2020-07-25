@@ -13,6 +13,8 @@ module.exports.login = function(request, response) {
 module.exports.postLogin = async function(request, response, next) {
   var email = request.body.email;
   var password = request.body.password; 
+  const salt = await bcrypt.genSalt(10);
+  const hashPass = await bcrypt.compare(password, user.password)
   
   var user = db.get('users').find({ email: email }).value();
   
@@ -25,24 +27,27 @@ module.exports.postLogin = async function(request, response, next) {
     });
     return;
   }
+
   
-  bcrypt.compare(request.body.password, user.password, function(err, res) {
   // if res == true, password matched
-     if(user.email == request.body.email && res) {
-       user.password = request.body.password;
-       console.log('Password Matches!');
+     if(user.password !== hashPass) {
+       response.render('auth/login', {
+        errors : [
+          'Wrong password'
+        ],
+        values: request.body
+      });
      }
   // else wrong password
-    else {
-    response.render('auth/login', {
-      errors : [
-        'Wrong password'
-      ],
-      values: request.body
-    });
-    return;
-      } 
-});
+    // else {
+    // response.render('auth/login', {
+    //   errors : [
+    //     'Wrong password'
+    //   ],
+    //   values: request.body
+    // });
+    // return;
+    //   } 
   
   // var hashedPassword = md5(password);
   
