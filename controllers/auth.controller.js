@@ -13,8 +13,6 @@ module.exports.login = function(request, response) {
 module.exports.postLogin = async function(request, response, next) {
   var email = request.body.email;
   var password = request.body.password; 
-  const salt = await bcrypt.genSalt(10);
-  const hashPass = await bcrypt.compare(password, user.password)
   
   var user = db.get('users').find({ email: email }).value();
   
@@ -28,16 +26,18 @@ module.exports.postLogin = async function(request, response, next) {
     return;
   }
 
+  const passLogin = await bcrypt.compare(password, user.password);
   
   // if res == true, password matched
-     if(user.password !== hashPass) {
-       response.render('auth/login', {
-        errors : [
-          'Wrong password'
-        ],
-        values: request.body
-      });
-     }
+  if(user.password !== passLogin) {
+    response.render('auth/login', {
+      errors : [
+        'Wrong password'
+      ],
+      values: request.body
+    });
+    return;
+   }
   // else wrong password
     // else {
     // response.render('auth/login', {

@@ -50,6 +50,34 @@
       "email": "123@gmail.com",
       "name": "long",
       "isAdmin": false
+    },
+    {
+      "id": "aVbOq-76i",
+      "password": "$2b$10$oORkUAdfjkvSq9v2Ez3zKecTiAi.g5/XMBOq3aigasKgAVxZAOUhu",
+      "email": "vutptit1@gmail.com",
+      "name": "Thanh",
+      "isAdmin": false
+    },
+    {
+      "id": "A2fSttztm",
+      "password": "$2b$10$iz3WSkkzziufV4p4BG/RlOwpX4mDvsRtljHC9JJI4GxQtgGB1X4RO",
+      "email": "vutpt1@gmail.com",
+      "name": "Trần Phước Trường Vũ ",
+      "isAdmin": false
+    },
+    {
+      "id": "0IVhB5fFN",
+      "password": "$2b$10$02HgafFNVNqWOXxVCLjw/OCnNuj6gGAG1TWRxmJYEr6E29e8jb6cu",
+      "email": "vutptit22@gmail.com",
+      "name": "Javase",
+      "isAdmin": false
+    },
+    {
+      "id": "HhI8FvHvl",
+      "password": "$2b$10$qjvRlx0Qh2kG/6jLp78FUOOQ68xJIYzJwW2SgQ3F4yvh1Vr9v4sRm",
+      "email": "vutptit22@gmail.com",
+      "name": "Javase",
+      "isAdmin": false
     }
   ],
   "transactions": [
