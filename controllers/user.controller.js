@@ -51,8 +51,8 @@ module.exports.postUpdate = function(request, response) {
 };
 
 module.exports.postCreate = async function(request, response) {
-     const salt = await bcrypt.genSalt(10);
-     const hashPass = await bcrypt.hash(request.body.password, salt)
+    const salt = await bcrypt.genSalt(10);
+    const hashPass = await bcrypt.hash(request.body.password, salt)
      
    let newUser = {
     id: shortid.generate(),
@@ -64,7 +64,7 @@ module.exports.postCreate = async function(request, response) {
    
    db.get("users").push(newUser).write();
   
-  response.redirect('/users')
+  response.redirect('/route')
   
   }
 

@@ -71,6 +71,20 @@
       "email": "123@gmail.com",
       "name": "long",
       "isAdmin": false
+    },
+    {
+      "id": "GgrPAG6kD",
+      "password": "$2b$10$x3A0Z0PcqxSAFzgoUhAm4eavEiUb3jJc/gEzURZKpsQjjqNG6r8Tq",
+      "email": "vutptiu@gmail.com",
+      "name": "Phong",
+      "isAdmin": false
+    },
+    {
+      "id": "erfwGxQUb",
+      "password": "$2b$10$71xNUyyPp/10Ai1SrkiieOdDeoPBrFWxdbfTyEIBLDO3al.3kgcSu",
+      "email": "punbeen@gmail.com",
+      "name": "Thanh",
+      "isAdmin": false
     }
   ],
   "transactions": [
