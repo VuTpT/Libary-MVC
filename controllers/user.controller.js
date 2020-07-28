@@ -51,6 +51,7 @@ module.exports.postUpdate = function(request, response) {
 };
 
 module.exports.postCreate = async function(request, response) {
+    let users = db.get("users").value();
     const salt = await bcrypt.genSalt(10);
     const hashPass = await bcrypt.hash(request.body.password, salt)
      
@@ -61,12 +62,13 @@ module.exports.postCreate = async function(request, response) {
     name: request.body.name,
     isAdmin: false
   }
-  let checkEmail = users.find(user => user.email === req.body.email)
+   
+  let checkEmail = users.find(user => user.email === request.body.email)
   if(checkEmail){
-    res.render("users/index", {
+    response.render("users/index", {
       users: users,
       errors: ["User have been already exists"],
-      values: req.body
+      values: request.body
     })
     return;
   }

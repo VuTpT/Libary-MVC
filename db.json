@@ -45,6 +45,21 @@
       "name": "Thanh",
       "isAdmin": false,
       "wrongLoginCount": 0
+    },
+    {
+      "id": "PrvBHSDfC",
+      "password": "$2b$10$0Re57gdTabkHKYeSBiKHkO9CpjspVzQQ/eW/gz/1fSs6lBGkoh6ca",
+      "email": "thanh111@gmail.com",
+      "name": "Phong",
+      "isAdmin": false
+    },
+    {
+      "id": "ATosRTKUC",
+      "password": "$2b$10$BBqROB20kmtoqfAUoRAb8e6NzXCO5UePPKWSIuwe/64xNW4JY7dLG",
+      "email": "vu1111@gmail.com",
+      "name": "Trần Phước Trường Vũ ",
+      "isAdmin": false,
+      "wrongLoginCount": 0
     }
   ],
   "transactions": [
