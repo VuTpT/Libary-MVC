@@ -61,6 +61,14 @@
       "name": "Trần Phước Trường Vũ ",
       "isAdmin": false,
       "wrongLoginCount": 0
+    },
+    {
+      "id": "SOHIjBnDL",
+      "password": "$2b$10$1FzxIm9.XlmVX3CGJtxv5uWHu8KZ85U1KDDnqBus.Iy4Xw/WyIB.G",
+      "email": "11mai@gmail.com",
+      "name": "Trần Phước Trường Vũ ",
+      "isAdmin": false,
+      "wrongLoginCount": 0
     }
   ],
   "transactions": [
