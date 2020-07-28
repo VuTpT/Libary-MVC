@@ -45,7 +45,7 @@ module.exports.delete = function(request, response) {
   .remove({ bookId : bookId })
   .write();
   
-  response.redirect('/route');
+  response.redirect('/books');
 };
 
 // METHOD POST
@@ -57,7 +57,7 @@ module.exports.postUpdate = function(request, response) {
     .assign({ title: request.body.title })
     .write()
   
-  response.redirect('/route');
+  response.redirect('/books');
 };
 
 module.exports.postCreate = function(request, response) {
@@ -69,5 +69,5 @@ module.exports.postCreate = function(request, response) {
     .value()
     .id;
   
-  response.redirect('/route');
+  response.redirect('/books');
 };

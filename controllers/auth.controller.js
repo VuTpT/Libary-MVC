@@ -60,7 +60,7 @@ module.exports.postLogin = async function(request, response, next) {
   }
 
   response.cookie('userId', user.id)
-  response.redirect('/route');
+  response.redirect('/books');
   next();
 };
 

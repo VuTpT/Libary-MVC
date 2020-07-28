@@ -29,7 +29,8 @@
       "password": "$2b$10$WRxiz7JG4mYnV.CTNizswe8hh3o66Bng3ZXavAJk1AVHRlobxHSc.",
       "email": "123@gmail.com",
       "name": "long",
-      "isAdmin": false
+      "isAdmin": false,
+      "wrongLoginCount": 0
     },
     {
       "id": "w2X9LdXh6",
