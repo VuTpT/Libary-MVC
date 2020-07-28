@@ -15,7 +15,8 @@ module.exports.postLogin = async function(request, response, next) {
   var password = request.body.password; 
   
   var user = db.get('users').find({ email: email }).value();
-  
+  let checkPassword = await bcrypt.compare(request.body.password, user.password);
+
   if(!user) {
     response.render('auth/login', {
       errors : [
@@ -26,29 +27,41 @@ module.exports.postLogin = async function(request, response, next) {
     return;
   }
 
-  const passLogin = await bcrypt.compare(password, user.password);
-  
-  // if res == true, password matched
-  if(user.password == passLogin) {
-    response.render('books/index')
-   }
-  // else wrong password
-    else {
-    response.render('auth/login', {
-      errors : [
-        'Wrong password'
-      ],
+  if (!user.wrongLoginCount) {
+    db.get("users")
+      .find({ id: user.id })
+      .set("wrongLoginCount", 0)
+      .write();
+  }
+
+  if (user.wrongLoginCount >= 4) {
+    response.render("auth/login", {
+      errors: ["Your account has been locked."],
       values: request.body
     });
+
     return;
-      } 
-  
-  // var hashedPassword = md5(password);
-  
-  response.cookie('userId', user.userId)
+  }
+
+  console.log(checkPassword);
+
+  if (!checkPassword) {
+    db.get("users")
+      .find({ id: user.id })
+      .assign({ wrongLoginCount: (user.wrongLoginCount += 1) })
+      .write();
+
+    response.render("auth/login", {
+      errors: ["Wrong password."],
+      values: request.body
+    });
+
+    return;
+  }
+
+  response.cookie('userId', user.id)
   response.redirect('/route');
   next();
 };
-
 
 

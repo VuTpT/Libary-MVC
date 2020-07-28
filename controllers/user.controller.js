@@ -61,6 +61,15 @@ module.exports.postCreate = async function(request, response) {
     name: request.body.name,
     isAdmin: false
   }
+  let checkEmail = users.find(user => user.email === req.body.email)
+  if(checkEmail){
+    res.render("users/index", {
+      users: users,
+      errors: ["User have been already exists"],
+      values: req.body
+    })
+    return;
+  }
    
    db.get("users").push(newUser).write();
   

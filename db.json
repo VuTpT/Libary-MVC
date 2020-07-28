@@ -37,6 +37,14 @@
       "email": "vutpt111@gmail.com",
       "name": "Trần Phước Trường Vũ ",
       "isAdmin": false
+    },
+    {
+      "id": "I0cbQjSB7",
+      "password": "$2b$10$sNBw9/xIce.IqVzIZL0Sz.hha4LJCYVNtDRVl0e044xJu4lsOsUoG",
+      "email": "punnui11@gmail.com",
+      "name": "Thanh",
+      "isAdmin": false,
+      "wrongLoginCount": 0
     }
   ],
   "transactions": [
